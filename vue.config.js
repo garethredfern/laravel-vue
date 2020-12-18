@@ -1,5 +1,5 @@
 module.exports = {
   devServer: {
-    proxy: "http://laravel-api.test",
+    proxy: "http://laravel-test.test",
   },
 };
