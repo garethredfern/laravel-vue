@@ -22,7 +22,7 @@ export default {
       const expires = this.$route.query.expires;
       const signature = this.$route.query.signature;
       await axios.get(
-        `http://localhost:8080/email/verify/${id}/${hash}?expires=${expires}&signature=${signature}`
+        `http://localhost/email/verify/${id}/${hash}?expires=${expires}&signature=${signature}`
       );
     },
   },

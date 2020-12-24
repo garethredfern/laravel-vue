@@ -20,57 +20,54 @@ export default {
   name: "Nav",
   methods: {
     async login() {
-      await axios.get("http://localhost:8080/sanctum/csrf-cookie");
-      await axios.post("http://localhost:8080/login", {
-        email: "garethr@hey.com",
+      await axios.get("http://localhost/sanctum/csrf-cookie");
+      await axios.post("http://localhost/login", {
+        email: "luke@jedi.com",
         password: "password",
       });
     },
     async getUser() {
-      const user = await axios.get("http://localhost:8080/api/users/1");
+      const user = await axios.get("http://localhost/api/users/1");
       console.debug(user);
     },
     async logout() {
-      await axios.get("http://localhost:8080/logout");
+      await axios.post("http://localhost/logout");
     },
     async createUser() {
-      await axios.post("http://localhost:8080/api/users", {
-        name: "Test",
-        email: "gareth.redfern@gmail.com",
+      await axios.post("http://localhost/api/users", {
+        name: "Rey",
+        email: "rey@jedi.com",
         password: "password",
       });
     },
     async updatePassword() {
-      await axios.post("http://localhost:8080/api/users/update/password", {
+      await axios.post("http://localhost/api/users/update/password", {
         currentPassword: "password",
         password: "password",
         passwordConfirmation: "password",
       });
     },
     async forgotPassword() {
-      await axios.get("http://localhost:8080/sanctum/csrf-cookie");
-      await axios.post("http://localhost:8080/forgot-password", {
-        email: "gareth.redfern@gmail.com",
+      await axios.get("http://localhost/sanctum/csrf-cookie");
+      await axios.post("http://localhost/forgot-password", {
+        email: "luke@jedi.com",
       });
     },
     async resetPassword() {
-      await axios.get("http://localhost:8080/sanctum/csrf-cookie");
-      await axios.post("http://localhost:8080/reset-password", {
+      await axios.get("http://localhost/sanctum/csrf-cookie");
+      await axios.post("http://localhost/reset-password", {
         token:
           "40200e3499a393b83d93750591331be276b45b66cd49d5a2305d24e1f4e1e01a",
         password: "password",
         password_confirmation: "password",
-        email: "gareth.redfern@gmail.com",
+        email: "luke@jedi.com",
       });
     },
     async resendVerification() {
-      await axios.get("http://localhost:8080/sanctum/csrf-cookie");
-      await axios.post(
-        "http://localhost:8080/email/verification-notification",
-        {
-          user: 1,
-        }
-      );
+      await axios.get("http://localhost/sanctum/csrf-cookie");
+      await axios.post("http://localhost/email/verification-notification", {
+        user: 1,
+      });
     },
   },
 };
