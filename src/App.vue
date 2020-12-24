@@ -1,11 +1,13 @@
 <template>
   <div id="app">
-    <nav>
-      <router-link to="/">Home</router-link> |
-      <router-link to="/about">About</router-link>
-    </nav>
+    <header>
+      <nav class="container mx-auto">
+        <router-link to="/">Home</router-link> |
+        <router-link to="/about">About</router-link>
+      </nav>
+    </header>
     <main class="container mx-auto">
-    <router-view />
+      <router-view />
     </main>
   </div>
 </template>
