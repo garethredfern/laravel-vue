@@ -15,19 +15,28 @@
     "vuex": "^3.6.0"
   },
   "devDependencies": {
-    "@vue/cli-plugin-babel": "~4.5.0",
-    "@vue/cli-plugin-eslint": "~4.5.0",
-    "@vue/cli-plugin-router": "~4.5.0",
-    "@vue/cli-plugin-vuex": "~4.5.0",
-    "@vue/cli-service": "~4.5.0",
+    "@tailwindcss/postcss7-compat": "^2.0.2",
+    "@vue/cli-plugin-babel": "^4.5.9",
+    "@vue/cli-plugin-eslint": "^4.5.9",
+    "@vue/cli-plugin-router": "^4.5.9",
+    "@vue/cli-plugin-vuex": "^4.5.9",
+    "@vue/cli-service": "^4.5.9",
     "@vue/eslint-config-prettier": "^6.0.0",
+    "autoprefixer": "^9.8.6",
     "babel-eslint": "^10.1.0",
     "eslint": "^7.16.0",
     "eslint-plugin-prettier": "^3.3.0",
     "eslint-plugin-vue": "^7.3.0",
+    "postcss": "^7.0.35",
     "prettier": "^2.2.1",
-    "tailwindcss": "^2.0.2",
+    "tailwindcss": "npm:@tailwindcss/postcss7-compat@^2.0.2",
     "vue-template-compiler": "^2.6.11"
+  },
+  "prettier": {
+    "trailingComma": "es5",
+    "tabWidth": 2,
+    "semi": true,
+    "singleQuote": false
   },
   "eslintConfig": {
     "root": true,
