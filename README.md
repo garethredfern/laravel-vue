@@ -1,4 +1,4 @@
-# Laravel Vue SPA Using Sanctum & Fortify authentication
+# Laravel Vue SPA Using Sanctum & Fortify Authentication
 
 ## Project setup
 ```
