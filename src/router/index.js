@@ -37,15 +37,13 @@ const router = new VueRouter({
 });
 
 router.beforeEach((to, from, next) => {
-  if (!store.getters["auth/authUser"]) {
+  const reqAuth = to.matched.some((record) => record.meta.requiresAuth);
+  if (reqAuth && !store.getters["auth/authUser"]) {
     store.dispatch("auth/getAuthUser").then(() => {
-      if (
-        to.matched.some((record) => record.meta.requiresAuth) &&
-        !store.getters["auth/authUser"]
-      ) {
+      if (!store.getters["auth/authUser"]) {
         next({ path: "/login", query: { redirect: to.fullPath } });
       } else {
-        next(); // make sure to always call next()!
+        next();
       }
     });
   } else {
