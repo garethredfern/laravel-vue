@@ -1,22 +1,21 @@
 import Vue from "vue";
+import store from "../store/index";
 import VueRouter from "vue-router";
-import Home from "../views/Home.vue";
 
 Vue.use(VueRouter);
 
 const routes = [
   {
-    path: "/",
-    name: "Home",
-    component: Home,
+    path: "/dashboard",
+    name: "dashboard",
+    meta: { requiresAuth: true },
+    component: () =>
+      import(/* webpackChunkName: "dashboard" */ "../views/Dashboard"),
   },
   {
-    path: "/about",
-    name: "About",
-    // route level code-splitting
-    // this generates a separate chunk (about.[hash].js) for this route
-    // which is lazy-loaded when the route is visited.
-    component: () => import(/* webpackChunkName: "about" */ "../views/About"),
+    path: "/login",
+    name: "login",
+    component: () => import(/* webpackChunkName: "login" */ "../views/Login"),
   },
   {
     path: "/reset-password",
@@ -28,13 +27,30 @@ const routes = [
     path: "/email/verify/:id/:hash",
     name: "ResetPassword",
     component: () =>
-      import(/* webpackChunkName: "reset-password" */ "../views/VerifyEmail"),
+      import(/* webpackChunkName: "verify-email" */ "../views/VerifyEmail"),
   },
 ];
 
 const router = new VueRouter({
   mode: "history",
   routes,
+});
+
+router.beforeEach((to, from, next) => {
+  if (!store.getters["auth/authUser"]) {
+    store.dispatch("auth/getAuthUser").then(() => {
+      if (
+        to.matched.some((record) => record.meta.requiresAuth) &&
+        !store.getters["auth/authUser"]
+      ) {
+        next({ path: "/login", query: { redirect: to.fullPath } });
+      } else {
+        next(); // make sure to always call next()!
+      }
+    });
+  } else {
+    next(); // make sure to always call next()!
+  }
 });
 
 export default router;
