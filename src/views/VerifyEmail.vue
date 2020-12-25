@@ -15,6 +15,7 @@ import axios from "axios";
 axios.defaults.withCredentials = true;
 
 export default {
+  name: "VerifyEmail",
   methods: {
     async verifyEmail() {
       const id = this.$route.params.id;
