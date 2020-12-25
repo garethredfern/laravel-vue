@@ -1,12 +1,9 @@
 <template>
   <div>
-    <button @click="login">Login</button>
-    <button @click="logout">Logout</button>
     <button @click="getUser">Get User</button>
     <button @click="createUser">Create User</button>
     <button @click="resetPassword">Reset Password</button>
     <button @click="updatePassword">Update Password</button>
-    <button @click="forgotPassword">Forgot Password</button>
     <button @click="resendVerification">Resend Verification</button>
   </div>
 </template>
@@ -19,20 +16,6 @@ axios.defaults.withCredentials = true;
 export default {
   name: "Nav",
   methods: {
-    async login() {
-      await axios.get("http://localhost/sanctum/csrf-cookie");
-      await axios.post("http://localhost/login", {
-        email: "luke@jedi.com",
-        password: "password",
-      });
-    },
-    async getUser() {
-      const user = await axios.get("http://localhost/api/users/1");
-      console.debug(user);
-    },
-    async logout() {
-      await axios.post("http://localhost/logout");
-    },
     async createUser() {
       await axios.post("http://localhost/api/users", {
         name: "Rey",
@@ -45,12 +28,6 @@ export default {
         currentPassword: "password",
         password: "password",
         passwordConfirmation: "password",
-      });
-    },
-    async forgotPassword() {
-      await axios.get("http://localhost/sanctum/csrf-cookie");
-      await axios.post("http://localhost/forgot-password", {
-        email: "luke@jedi.com",
       });
     },
     async resetPassword() {
