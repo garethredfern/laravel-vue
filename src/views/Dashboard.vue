@@ -6,9 +6,6 @@
         <button @click="createUser">Create User</button>
       </li>
       <li>
-        <button @click="resetPassword">Reset Password</button>
-      </li>
-      <li>
         <button @click="updatePassword">Update Password</button>
       </li>
       <li>
@@ -38,16 +35,6 @@ export default {
         currentPassword: "password",
         password: "password",
         passwordConfirmation: "password",
-      });
-    },
-    async resetPassword() {
-      await axios.get("http://localhost/sanctum/csrf-cookie");
-      await axios.post("http://localhost/reset-password", {
-        token:
-          "40200e3499a393b83d93750591331be276b45b66cd49d5a2305d24e1f4e1e01a",
-        password: "password",
-        password_confirmation: "password",
-        email: "luke@jedi.com",
       });
     },
     async resendVerification() {
