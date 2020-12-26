@@ -3,10 +3,10 @@ import axios from "axios";
 axios.defaults.withCredentials = true;
 
 export default {
-  async login(LoginDetails) {
+  async login(payload) {
     try {
       await axios.get("http://localhost/sanctum/csrf-cookie");
-      await axios.post("http://localhost/login", LoginDetails);
+      await axios.post("http://localhost/login", payload);
     } catch (error) {
       console.error(error);
     }
@@ -27,8 +27,11 @@ export default {
   async getAuthUser() {
     return await axios.get("http://localhost/api/users/auth");
   },
-  async resetPassword(resetDetails) {
+  async resetPassword(payload) {
     await axios.get("http://localhost/sanctum/csrf-cookie");
-    await axios.post("http://localhost/reset-password", resetDetails);
+    await axios.post("http://localhost/reset-password", payload);
+  },
+  async updatePassword(payload) {
+    await axios.put("http://localhost/user/password", payload);
   },
 };

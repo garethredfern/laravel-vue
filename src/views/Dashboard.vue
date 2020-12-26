@@ -6,35 +6,30 @@
         <button @click="createUser">Create User</button>
       </li>
       <li>
-        <button @click="updatePassword">Update Password</button>
-      </li>
-      <li>
         <button @click="resendVerification">Resend Verification</button>
       </li>
     </ul>
+    <UpdatePassword />
   </div>
 </template>
 
 <script>
 import axios from "axios";
+import UpdatePassword from "@/components/UpdatePassword";
 
 axios.defaults.withCredentials = true;
 
 export default {
   name: "Dashboard",
+  components: {
+    UpdatePassword,
+  },
   methods: {
     async createUser() {
       await axios.post("http://localhost/api/users", {
         name: "Rey",
         email: "rey@jedi.com",
         password: "password",
-      });
-    },
-    async updatePassword() {
-      await axios.post("http://localhost/api/users/update/password", {
-        currentPassword: "password",
-        password: "password",
-        passwordConfirmation: "password",
       });
     },
     async resendVerification() {
