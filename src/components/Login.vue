@@ -15,30 +15,28 @@
       />
     </div>
     <div class="flex justify-between">
-      <button type="button" @click="login" :class="btnStyles">Login</button>
-      <button type="button" @click="forgotPassword" :class="btnStyles">
-        Forgot Password
-      </button>
+      <BaseBtn type="button" @click="login" text="Login" />
+      <router-link to="/forgot-password" class="text-gray-500"
+        >Forgot Password</router-link
+      >
     </div>
   </form>
 </template>
 
 <script>
-import AuthService from "@/services/AuthService";
+import BaseBtn from "@/components/BaseBtn";
 
 export default {
   name: "LoginFom",
+  components: {
+    BaseBtn,
+  },
   data() {
     return {
       email: "luke@jedi.com",
       password: "password",
       error: null,
     };
-  },
-  computed: {
-    btnStyles() {
-      return "px-2.5 py-1.5 border border-transparent text-xs rounded shadow-sm text-white bg-blue-500 hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 text-center";
-    },
   },
   methods: {
     login() {
@@ -50,13 +48,6 @@ export default {
         .dispatch("auth/login", LoginDetails)
         .then(() => this.$router.push("/dashboard"))
         .catch((error) => (this.error = error));
-    },
-    async forgotPassword() {
-      try {
-        await AuthService.forgotPassword();
-      } catch (error) {
-        console.error(error);
-      }
     },
   },
 };
