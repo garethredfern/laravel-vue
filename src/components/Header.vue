@@ -6,7 +6,7 @@
         <router-link to="/dashboard">Dashboard</router-link>
         <Logout />
       </div>
-      <router-link to="/login">Login</router-link>
+      <router-link to="/login" v-else>Login</router-link>
     </nav>
   </header>
 </template>
