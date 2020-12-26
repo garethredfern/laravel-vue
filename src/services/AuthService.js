@@ -3,13 +3,10 @@ import axios from "axios";
 axios.defaults.withCredentials = true;
 
 export default {
-  async login() {
+  async login(LoginDetails) {
     try {
       await axios.get("http://localhost/sanctum/csrf-cookie");
-      await axios.post("http://localhost/login", {
-        email: "luke@jedi.com",
-        password: "password",
-      });
+      await axios.post("http://localhost/login", LoginDetails);
     } catch (error) {
       console.error(error);
     }
