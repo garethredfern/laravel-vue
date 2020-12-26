@@ -56,6 +56,13 @@ export const actions = {
         commit("SET_ERROR", error.data ? error.data.message : error);
       });
   },
+  resetPassword({ commit }, payload) {
+    commit("SET_LOADING", true);
+    return AuthService.resetPassword(payload).catch((error) => {
+      commit("SET_LOADING", false);
+      commit("SET_ERROR", error.data ? error.data.message : error);
+    });
+  },
 };
 
 export const getters = {
