@@ -32,6 +32,7 @@ export default {
     return {
       email: "luke@jedi.com",
       password: "password",
+      error: null,
     };
   },
   computed: {
@@ -45,7 +46,10 @@ export default {
         email: this.email,
         password: this.password,
       };
-      this.$store.dispatch("auth/login", LoginDetails);
+      this.$store
+        .dispatch("auth/login", LoginDetails)
+        .then(() => this.$router.push("/dashboard"))
+        .catch((error) => (this.error = error));
     },
     async forgotPassword() {
       try {
