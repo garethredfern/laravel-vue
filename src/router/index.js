@@ -6,6 +6,11 @@ Vue.use(VueRouter);
 
 const routes = [
   {
+    path: "/",
+    name: "home",
+    component: () => import(/* webpackChunkName: "home" */ "../views/Home"),
+  },
+  {
     path: "/dashboard",
     name: "dashboard",
     meta: { requiresAuth: true },

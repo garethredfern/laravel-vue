@@ -1,5 +1,5 @@
 <template>
-  <header class="p-5 bg-blue-100">
+  <header class="p-5 bg-blue-400 text-white">
     <nav class="container mx-auto flex justify-between items-center">
       <router-link to="/">Home</router-link>
       <div class="flex space-x-4" v-if="authUser">
