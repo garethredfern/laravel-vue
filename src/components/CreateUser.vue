@@ -3,6 +3,15 @@
     <h2 class="font-bold text-xl text-center mb-4">Create User</h2>
     <form class="border p-5 rounded">
       <div class="mb-2">
+        <label for="name" class="text-gray-500">Name</label>
+        <input
+          type="text"
+          id="name"
+          v-model="name"
+          class="border rounded px-2.5 py-1.5 w-full"
+        />
+      </div>
+      <div class="mb-2">
         <label for="email" class="text-gray-500">Email</label>
         <input
           type="email"
@@ -53,6 +62,7 @@ export default {
   },
   data() {
     return {
+      name: null,
       email: null,
       password: null,
       passwordConfirm: null,
@@ -65,6 +75,7 @@ export default {
       this.error = null;
       this.message = null;
       const payload = {
+        name: this.name,
         email: this.email,
         password: this.password,
         password_confirmation: this.passwordConfirm,
