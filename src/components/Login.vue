@@ -1,15 +1,19 @@
 <template>
   <form class="border p-5 rounded">
     <div class="mb-2">
+      <label for="email" class="text-gray-500">Email</label>
       <input
         type="email"
+        id="email"
         v-model="email"
         class="border rounded px-2.5 py-1.5 w-full"
       />
     </div>
     <div class="mb-4">
+      <label for="password" class="text-gray-500">Password</label>
       <input
         type="password"
+        id="password"
         v-model="password"
         class="border rounded px-2.5 py-1.5 w-full"
       />
