@@ -27,4 +27,8 @@ export default {
   async getAuthUser() {
     return await axios.get("http://localhost/api/users/auth");
   },
+  async resetPassword(resetDetails) {
+    await axios.get("http://localhost/sanctum/csrf-cookie");
+    await axios.post("http://localhost/reset-password", resetDetails);
+  },
 };
