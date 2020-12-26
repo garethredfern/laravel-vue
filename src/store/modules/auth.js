@@ -28,16 +28,12 @@ export const mutations = {
 };
 
 export const actions = {
-  login({ commit, dispatch }, payload) {
+  login({ commit }, payload) {
     commit("SET_LOADING", true);
-    return AuthService.login(payload)
-      .then(() => {
-        dispatch("getAuthUser");
-      })
-      .catch((error) => {
-        commit("SET_LOADING", false);
-        commit("SET_ERROR", error.data ? error.data.message : error);
-      });
+    return AuthService.login(payload).catch((error) => {
+      commit("SET_LOADING", false);
+      commit("SET_ERROR", error.data ? error.data.message : error);
+    });
   },
   logout({ commit }) {
     return AuthService.logout()
