@@ -62,6 +62,8 @@ export default {
   },
   methods: {
     updatePassword() {
+      this.error = null;
+      this.message = null;
       const payload = {
         current_password: this.currentPassword,
         password: this.password,
