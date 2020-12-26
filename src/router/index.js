@@ -29,6 +29,14 @@ const routes = [
     component: () =>
       import(/* webpackChunkName: "verify-email" */ "../views/VerifyEmail"),
   },
+  {
+    path: "/forgot-password",
+    name: "ForgotPassword",
+    component: () =>
+      import(
+        /* webpackChunkName: "forgot-password" */ "../views/ForgotPassword"
+      ),
+  },
 ];
 
 const router = new VueRouter({
