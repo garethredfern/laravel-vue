@@ -1,14 +1,6 @@
 <template>
   <div id="app">
-    <header class="p-5 bg-blue-100">
-      <nav class="container mx-auto flex justify-between items-center">
-        <router-link to="/">Home</router-link>
-        <div class="flex space-x-4">
-          <router-link to="/dashboard">Dashboard</router-link>
-          <Logout />
-        </div>
-      </nav>
-    </header>
+    <Header />
     <main class="container mx-auto">
       <router-view />
     </main>
@@ -16,12 +8,12 @@
 </template>
 
 <script>
-import Logout from "@/components/Logout";
+import Header from "@/components/Header";
 
 export default {
   name: "app",
   components: {
-    Logout,
+    Header,
   },
 };
 </script>
