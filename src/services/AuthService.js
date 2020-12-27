@@ -37,4 +37,11 @@ export default {
   async createUser(payload) {
     await axios.post("http://localhost/register", payload);
   },
+  async resendVerification(payload) {
+    await axios.get("http://localhost/sanctum/csrf-cookie");
+    await axios.post(
+      "http://localhost/email/verification-notification",
+      payload
+    );
+  },
 };
