@@ -38,6 +38,8 @@ export default {
   },
   methods: {
     forgotPassword() {
+      this.error = null;
+      this.message = null;
       const payload = {
         email: this.email,
       };
