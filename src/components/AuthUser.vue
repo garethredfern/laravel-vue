@@ -1,6 +1,6 @@
 <template>
   <div class="max-w-sm p-5">
-    <h2 class="font-bold text-xl text-center mb-4">User Details</h2>
+    <h2 class="font-bold text-lg text-center mb-2">User Details</h2>
     <div class="border p-5 rounded">
       <ul>
         <li class="font-bold mb-1">{{ authUser.name }}</li>
