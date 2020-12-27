@@ -2,36 +2,35 @@ import axios from "axios";
 
 axios.defaults.withCredentials = true;
 
+const apiUrl = process.env.VUE_APP_API_URL;
+
 export default {
   async login(payload) {
-    await axios.get("http://localhost/sanctum/csrf-cookie");
-    await axios.post("http://localhost/login", payload);
+    await axios.get(`${apiUrl}/sanctum/csrf-cookie`);
+    await axios.post(`${apiUrl}/login`, payload);
   },
   async logout() {
-    await axios.post("http://localhost/logout");
+    await axios.post(`${apiUrl}/logout`);
   },
   async forgotPassword(payload) {
-    await axios.get("http://localhost/sanctum/csrf-cookie");
-    await axios.post("http://localhost/forgot-password", payload);
+    await axios.get(`${apiUrl}/sanctum/csrf-cookie`);
+    await axios.post(`${apiUrl}/forgot-password`, payload);
   },
   async getAuthUser() {
-    return await axios.get("http://localhost/api/users/auth");
+    return await axios.get(`${apiUrl}/api/users/auth`);
   },
   async resetPassword(payload) {
-    await axios.get("http://localhost/sanctum/csrf-cookie");
-    await axios.post("http://localhost/reset-password", payload);
+    await axios.get(`${apiUrl}/sanctum/csrf-cookie`);
+    await axios.post(`${apiUrl}/reset-password`, payload);
   },
   async updatePassword(payload) {
-    await axios.put("http://localhost/user/password", payload);
+    await axios.put(`${apiUrl}/user/password`, payload);
   },
   async registerUser(payload) {
-    await axios.post("http://localhost/register", payload);
+    await axios.post(`${apiUrl}/register`, payload);
   },
   async resendVerification(payload) {
-    await axios.get("http://localhost/sanctum/csrf-cookie");
-    await axios.post(
-      "http://localhost/email/verification-notification",
-      payload
-    );
+    await axios.get(`${apiUrl}/sanctum/csrf-cookie`);
+    await axios.post(`${apiUrl}/email/verification-notification`, payload);
   },
 };

@@ -11,7 +11,7 @@ import axios from "axios";
 import store from "../store/store";
 
 export const apiClient = axios.create({
-  baseURL: "http://localhost/api",
+  baseURL: process.env.VUE_APP_API_URL + "/api",
 });
 
 /*
