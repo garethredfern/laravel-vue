@@ -21,6 +21,7 @@
 </template>
 
 <script>
+import { getError } from "@/utils/helpers";
 import BaseBtn from "@/components/BaseBtn";
 import AuthService from "@/services/AuthService";
 
@@ -45,7 +46,7 @@ export default {
       };
       AuthService.forgotPassword(payload)
         .then(() => (this.message = "Reset password email sent."))
-        .catch((error) => (this.error = error));
+        .catch((error) => (this.error = getError(error)));
     },
   },
 };

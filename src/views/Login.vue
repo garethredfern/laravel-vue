@@ -27,10 +27,17 @@
         >
       </div>
     </form>
+    <p v-if="message" class="mt-2 text-green-500 text-sm">
+      {{ message }}
+    </p>
+    <p v-if="error" class="mt-2 text-red-500 text-sm">
+      {{ error }}
+    </p>
   </div>
 </template>
 
 <script>
+import { getError } from "@/utils/helpers";
 import BaseBtn from "@/components/BaseBtn";
 import AuthService from "@/services/AuthService";
 
@@ -54,7 +61,7 @@ export default {
       };
       AuthService.login(payload)
         .then(() => this.$router.push("/dashboard"))
-        .catch((error) => (this.error = error));
+        .catch((error) => (this.error = getError(error)));
     },
   },
 };

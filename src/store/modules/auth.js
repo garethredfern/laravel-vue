@@ -1,3 +1,4 @@
+import { getError } from "@/utils/helpers";
 import AuthService from "@/services/AuthService";
 
 export const namespaced = true;
@@ -35,7 +36,7 @@ export const actions = {
       })
       .catch((error) => {
         commit("CLEAR_USER");
-        commit("SET_ERROR", error.data ? error.data.message : error);
+        commit("SET_ERROR", getError(error));
       });
   },
   getAuthUser({ commit }) {

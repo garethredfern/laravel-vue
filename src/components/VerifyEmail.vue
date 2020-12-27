@@ -14,6 +14,7 @@
 
 <script>
 import { mapGetters } from "vuex";
+import { getError } from "@/utils/helpers";
 import BaseBtn from "@/components/BaseBtn";
 import AuthService from "@/services/AuthService";
 
@@ -40,7 +41,7 @@ export default {
       };
       AuthService.resendVerification(payload)
         .then(() => (this.message = "Verification email sent."))
-        .catch((error) => (this.error = error));
+        .catch((error) => (this.error = getError(error)));
     },
   },
 };

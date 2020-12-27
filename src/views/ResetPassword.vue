@@ -43,6 +43,7 @@
 </template>
 
 <script>
+import { getError } from "@/utils/helpers";
 import BaseBtn from "@/components/BaseBtn";
 import AuthService from "@/services/AuthService";
 
@@ -72,7 +73,7 @@ export default {
       };
       AuthService.resetPassword(payload)
         .then(() => (this.message = "Password reset."))
-        .catch((error) => (this.error = error));
+        .catch((error) => (this.error = getError(error)));
     },
   },
 };

@@ -4,19 +4,11 @@ axios.defaults.withCredentials = true;
 
 export default {
   async login(payload) {
-    try {
-      await axios.get("http://localhost/sanctum/csrf-cookie");
-      await axios.post("http://localhost/login", payload);
-    } catch (error) {
-      console.error(error);
-    }
+    await axios.get("http://localhost/sanctum/csrf-cookie");
+    await axios.post("http://localhost/login", payload);
   },
   async logout() {
-    try {
-      await axios.post("http://localhost/logout");
-    } catch (error) {
-      console.error(error);
-    }
+    await axios.post("http://localhost/logout");
   },
   async forgotPassword(payload) {
     await axios.get("http://localhost/sanctum/csrf-cookie");
