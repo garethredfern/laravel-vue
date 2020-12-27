@@ -29,12 +29,6 @@ const routes = [
       import(/* webpackChunkName: "reset-password" */ "../views/ResetPassword"),
   },
   {
-    path: "/email/verify/:id/:hash",
-    name: "ResetPassword",
-    component: () =>
-      import(/* webpackChunkName: "verify-email" */ "../views/VerifyEmail"),
-  },
-  {
     path: "/forgot-password",
     name: "ForgotPassword",
     component: () =>
