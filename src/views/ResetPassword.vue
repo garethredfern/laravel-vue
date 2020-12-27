@@ -71,7 +71,7 @@ export default {
       };
       this.$store
         .dispatch("auth/resetPassword", payload)
-        .then(() => (this.message = "Password reset"))
+        .then(() => (this.message = "Password reset."))
         .catch((error) => (this.error = error));
     },
   },

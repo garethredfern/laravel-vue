@@ -35,7 +35,7 @@ export default {
         user: 1,
       };
       AuthService.resendVerification(payload)
-        .then(() => (this.message = "Verification email sent"))
+        .then(() => (this.message = "Verification email sent."))
         .catch((error) => (this.error = error));
     },
   },

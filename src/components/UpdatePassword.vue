@@ -70,7 +70,7 @@ export default {
         password_confirmation: this.passwordConfirm,
       };
       AuthService.updatePassword(payload)
-        .then(() => (this.message = "Password updated"))
+        .then(() => (this.message = "Password updated."))
         .catch((error) => (this.error = error));
     },
   },
