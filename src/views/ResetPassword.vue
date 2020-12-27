@@ -61,6 +61,8 @@ export default {
   },
   methods: {
     resetPassword() {
+      this.error = null;
+      this.message = null;
       const payload = {
         email: this.email,
         password: this.password,
@@ -69,7 +71,7 @@ export default {
       };
       this.$store
         .dispatch("auth/resetPassword", payload)
-        .then(() => this.$router.push("/"))
+        .then(() => (this.message = "Password reset"))
         .catch((error) => (this.error = error));
     },
   },
