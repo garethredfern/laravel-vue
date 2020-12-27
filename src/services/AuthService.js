@@ -18,11 +18,9 @@ export default {
       console.error(error);
     }
   },
-  async forgotPassword() {
+  async forgotPassword(payload) {
     await axios.get("http://localhost/sanctum/csrf-cookie");
-    await axios.post("http://localhost/forgot-password", {
-      email: "luke@jedi.com",
-    });
+    await axios.post("http://localhost/forgot-password", payload);
   },
   async getAuthUser() {
     return await axios.get("http://localhost/api/users/auth");

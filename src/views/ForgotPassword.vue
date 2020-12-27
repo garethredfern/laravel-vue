@@ -11,6 +11,12 @@
       </div>
       <BaseBtn type="button" @click="forgotPassword" text="Forgot Password" />
     </form>
+    <p v-if="message" class="mt-2 text-green-500 text-sm">
+      {{ message }}
+    </p>
+    <p v-if="error" class="mt-2 text-red-500 text-sm">
+      {{ error }}
+    </p>
   </div>
 </template>
 
@@ -27,15 +33,17 @@ export default {
     return {
       email: "luke@jedi.com",
       error: null,
+      message: null,
     };
   },
   methods: {
-    async forgotPassword() {
-      try {
-        await AuthService.forgotPassword();
-      } catch (error) {
-        this.error = error;
-      }
+    forgotPassword() {
+      const payload = {
+        email: this.email,
+      };
+      AuthService.forgotPassword(payload)
+        .then(() => (this.message = "Reset password email sent."))
+        .catch((error) => (this.error = error));
     },
   },
 };
