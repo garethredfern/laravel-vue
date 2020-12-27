@@ -1,6 +1,6 @@
 <template>
   <div class="max-w-sm p-5">
-    <h2 class="font-bold text-xl text-center mb-4">Create User</h2>
+    <h2 class="font-bold text-xl text-center mb-4">Register</h2>
     <form class="border p-5 rounded">
       <div class="mb-2">
         <label for="name" class="text-gray-500">Name</label>
@@ -40,7 +40,7 @@
           class="border rounded px-2.5 py-1.5 w-full"
         />
       </div>
-      <BaseBtn type="button" @click="createUser" text="Create User" />
+      <BaseBtn type="button" @click="registerUser" text="Register" />
     </form>
     <p v-if="message" class="mt-2 text-green-500 text-sm">
       {{ message }}
@@ -56,7 +56,7 @@ import BaseBtn from "@/components/BaseBtn";
 import AuthService from "@/services/AuthService";
 
 export default {
-  name: "CreateUser",
+  name: "RegisterUser",
   components: {
     BaseBtn,
   },
@@ -71,7 +71,7 @@ export default {
     };
   },
   methods: {
-    createUser() {
+    registerUser() {
       this.error = null;
       this.message = null;
       const payload = {
@@ -80,8 +80,8 @@ export default {
         password: this.password,
         password_confirmation: this.passwordConfirm,
       };
-      AuthService.createUser(payload)
-        .then(() => (this.message = "User created"))
+      AuthService.registerUser(payload)
+        .then(() => this.$router.push("/dashboard"))
         .catch((error) => (this.error = error));
     },
   },

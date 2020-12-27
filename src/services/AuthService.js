@@ -34,7 +34,7 @@ export default {
   async updatePassword(payload) {
     await axios.put("http://localhost/user/password", payload);
   },
-  async createUser(payload) {
+  async registerUser(payload) {
     await axios.post("http://localhost/register", payload);
   },
   async resendVerification(payload) {
