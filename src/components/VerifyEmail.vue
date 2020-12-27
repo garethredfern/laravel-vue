@@ -1,10 +1,7 @@
 <template>
-  <div class="max-w-sm p-5">
-    <h2 class="font-bold text-xl text-center mb-4">
-      Resend Verification Email
-    </h2>
-    <form class="border p-5 rounded">
-      <BaseBtn type="button" @click="resendVerification" text="Resend Email" />
+  <div>
+    <form>
+      <BaseBtn type="button" @click="resendVerification" text="Verify Email" />
     </form>
     <p v-if="message" class="mt-2 text-green-500 text-sm">
       {{ message }}
