@@ -13,6 +13,7 @@
 </template>
 
 <script>
+import { mapGetters } from "vuex";
 import BaseBtn from "@/components/BaseBtn";
 import AuthService from "@/services/AuthService";
 
@@ -27,12 +28,15 @@ export default {
       message: null,
     };
   },
+  computed: {
+    ...mapGetters("auth", ["authUser"]),
+  },
   methods: {
     resendVerification() {
       this.error = null;
       this.message = null;
       const payload = {
-        user: 1,
+        user: this.authUser.id,
       };
       AuthService.resendVerification(payload)
         .then(() => (this.message = "Verification email sent."))

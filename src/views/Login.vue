@@ -32,6 +32,7 @@
 
 <script>
 import BaseBtn from "@/components/BaseBtn";
+import AuthService from "@/services/AuthService";
 
 export default {
   name: "LoginView",
@@ -47,12 +48,11 @@ export default {
   },
   methods: {
     login() {
-      const LoginDetails = {
+      const payload = {
         email: this.email,
         password: this.password,
       };
-      this.$store
-        .dispatch("auth/login", LoginDetails)
+      AuthService.login(payload)
         .then(() => this.$router.push("/dashboard"))
         .catch((error) => (this.error = error));
     },

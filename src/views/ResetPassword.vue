@@ -44,6 +44,7 @@
 
 <script>
 import BaseBtn from "@/components/BaseBtn";
+import AuthService from "@/services/AuthService";
 
 export default {
   name: "ResetPassword",
@@ -69,8 +70,7 @@ export default {
         password_confirmation: this.passwordConfirm,
         token: this.$route.query.token,
       };
-      this.$store
-        .dispatch("auth/resetPassword", payload)
+      AuthService.resetPassword(payload)
         .then(() => (this.message = "Password reset."))
         .catch((error) => (this.error = error));
     },
