@@ -33,12 +33,7 @@
       </div>
       <BaseBtn type="button" @click="updatePassword" text="Update Password" />
     </form>
-    <p v-if="message" class="mt-2 text-green-500 text-sm">
-      {{ message }}
-    </p>
-    <p v-if="error" class="mt-2 text-red-500 text-sm">
-      {{ error }}
-    </p>
+    <FlashMessage :message="message" :error="error" />
   </div>
 </template>
 
@@ -46,11 +41,13 @@
 import { getError } from "@/utils/helpers";
 import BaseBtn from "@/components/BaseBtn";
 import AuthService from "@/services/AuthService";
+import FlashMessage from "@/components/FlashMessage";
 
 export default {
   name: "UpdatePassword",
   components: {
     BaseBtn,
+    FlashMessage,
   },
   data() {
     return {
