@@ -30,7 +30,6 @@ export default {
     await axios.post(`${apiUrl}/register`, payload);
   },
   async resendVerification(payload) {
-    await axios.get(`${apiUrl}/sanctum/csrf-cookie`);
     await axios.post(`${apiUrl}/email/verification-notification`, payload);
   },
 };
