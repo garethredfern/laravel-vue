@@ -15,23 +15,6 @@ export const apiClient = axios.create({
 });
 
 /*
- * Add a request interceptor
- @param config
-*/
-apiClient.interceptors.request.use(
-  function (config) {
-    const token = window.localStorage.getItem("token");
-    if (token != null) {
-      config.headers.Authorization = `Bearer ${token}`;
-    }
-    return config;
-  },
-  function (error) {
-    return Promise.reject(error.response);
-  }
-);
-
-/*
  * Add a response interceptor
  */
 apiClient.interceptors.response.use(
