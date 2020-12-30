@@ -1,35 +1,52 @@
 import axios from "axios";
+import store from "@/store/index";
 
-axios.defaults.withCredentials = true;
+export const authClient = axios.create({
+  baseURL: process.env.VUE_APP_API_URL,
+  withCredentials: true,
+});
 
-const apiUrl = process.env.VUE_APP_API_URL;
+/*
+ * Add a response interceptor
+ */
+authClient.interceptors.response.use(
+  (response) => {
+    return response;
+  },
+  function (error) {
+    if (error.response.status === 401 || error.response.status === 419) {
+      store.dispatch("auth/logout");
+    }
+    return Promise.reject(error.response);
+  }
+);
 
 export default {
   async login(payload) {
-    await axios.get(`${apiUrl}/sanctum/csrf-cookie`);
-    await axios.post(`${apiUrl}/login`, payload);
+    await authClient.get("/sanctum/csrf-cookie");
+    await authClient.post("/login", payload);
   },
   async logout() {
-    await axios.post(`${apiUrl}/logout`);
+    await authClient.post("/logout");
   },
   async forgotPassword(payload) {
-    await axios.get(`${apiUrl}/sanctum/csrf-cookie`);
-    await axios.post(`${apiUrl}/forgot-password`, payload);
+    await authClient.get("/sanctum/csrf-cookie");
+    await authClient.post("/forgot-password", payload);
   },
   async getAuthUser() {
-    return await axios.get(`${apiUrl}/api/users/auth`);
+    return await authClient.get("/api/users/auth");
   },
   async resetPassword(payload) {
-    await axios.get(`${apiUrl}/sanctum/csrf-cookie`);
-    await axios.post(`${apiUrl}/reset-password`, payload);
+    await authClient.get("/sanctum/csrf-cookie");
+    await authClient.post("/reset-password", payload);
   },
   async updatePassword(payload) {
-    await axios.put(`${apiUrl}/user/password`, payload);
+    await authClient.put("/user/password", payload);
   },
   async registerUser(payload) {
-    await axios.post(`${apiUrl}/register`, payload);
+    await authClient.post("/register", payload);
   },
   async sendVerification(payload) {
-    await axios.post(`${apiUrl}/email/verification-notification`, payload);
+    await authClient.post("/email/verification-notification", payload);
   },
 };
