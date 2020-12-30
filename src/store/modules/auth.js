@@ -48,7 +48,8 @@ export const actions = {
       })
       .catch((error) => {
         commit("SET_LOADING", false);
-        commit("SET_ERROR", error.data ? error.data.message : error);
+        commit("SET_USER", null);
+        commit("SET_ERROR", getError(error));
       });
   },
 };
