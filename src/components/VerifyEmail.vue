@@ -1,7 +1,7 @@
 <template>
   <div>
     <form>
-      <BaseBtn type="button" @click="resendVerification" text="Verify Email" />
+      <BaseBtn type="button" @click="sendVerification" text="Verify Email" />
     </form>
     <FlashMessage :message="message" :error="error" />
   </div>
@@ -30,13 +30,13 @@ export default {
     ...mapGetters("auth", ["authUser"]),
   },
   methods: {
-    resendVerification() {
+    sendVerification() {
       this.error = null;
       this.message = null;
       const payload = {
         user: this.authUser.id,
       };
-      AuthService.resendVerification(payload)
+      AuthService.sendVerification(payload)
         .then(() => (this.message = "Verification email sent."))
         .catch((error) => (this.error = getError(error)));
     },

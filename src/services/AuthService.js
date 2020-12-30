@@ -29,7 +29,7 @@ export default {
   async registerUser(payload) {
     await axios.post(`${apiUrl}/register`, payload);
   },
-  async resendVerification(payload) {
+  async sendVerification(payload) {
     await axios.post(`${apiUrl}/email/verification-notification`, payload);
   },
 };
