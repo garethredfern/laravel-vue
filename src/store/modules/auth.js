@@ -13,10 +13,6 @@ export const mutations = {
   SET_USER(state, user) {
     state.user = user;
   },
-  CLEAR_USER() {
-    window.localStorage.clear();
-    location.reload();
-  },
   SET_LOADING(state, loading) {
     state.loading = loading;
   },
@@ -32,10 +28,10 @@ export const actions = {
   logout({ commit }) {
     return AuthService.logout()
       .then(() => {
-        commit("CLEAR_USER");
+        commit("SET_USER", null);
       })
       .catch((error) => {
-        commit("CLEAR_USER");
+        commit("SET_USER", null);
         commit("SET_ERROR", getError(error));
       });
   },
