@@ -1,6 +1,5 @@
 <template>
   <div class="p-5">
-    <h2 class="text-xl font-bold">Dashboard</h2>
     <div class="flex space-x-2">
       <AuthUser />
       <UpdatePassword />
