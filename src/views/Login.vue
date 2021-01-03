@@ -1,7 +1,7 @@
 <template>
   <div class="max-w-sm p-5 m-auto">
-    <h2 class="font-bold text-xl text-center mb-4">Login</h2>
-    <form class="border p-5 rounded">
+    <h2 class="mb-4 text-xl font-bold text-center">Login</h2>
+    <form @submit.prevent="login" class="p-5 border rounded">
       <div class="mb-2">
         <label for="email" class="text-gray-500">Email</label>
         <input
@@ -21,7 +21,7 @@
         />
       </div>
       <div class="flex justify-between">
-        <BaseBtn type="button" @click="login" text="Login" />
+        <BaseBtn type="submit" text="Login" />
         <router-link to="/forgot-password" class="text-gray-500"
           >Forgot Password</router-link
         >
