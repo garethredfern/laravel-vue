@@ -1,7 +1,7 @@
 <template>
   <div class="max-w-sm p-5">
     <h2 class="mb-2 text-lg font-bold text-center">Update Password</h2>
-    <form class="p-5 border rounded">
+    <form @submit.prevent="updatePassword" class="p-5 border rounded">
       <div class="mb-2">
         <label for="password" class="text-gray-500">Current Password</label>
         <input
@@ -31,7 +31,7 @@
           class="border rounded px-2.5 py-1.5 w-full"
         />
       </div>
-      <BaseBtn type="button" @click="updatePassword" text="Update Password" />
+      <BaseBtn type="submit" text="Update Password" />
     </form>
     <FlashMessage :message="message" :error="error" />
   </div>

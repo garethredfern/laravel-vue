@@ -1,7 +1,7 @@
 <template>
   <div class="max-w-sm p-5 m-auto">
     <h2 class="mb-4 text-xl font-bold text-center">Forgot Password</h2>
-    <form class="p-5 border rounded">
+    <form @submit.prevent="forgotPassword" class="p-5 border rounded">
       <div class="mb-4">
         <input
           type="email"
@@ -9,7 +9,7 @@
           class="border rounded px-2.5 py-1.5 w-full"
         />
       </div>
-      <BaseBtn type="button" @click="forgotPassword" text="Forgot Password" />
+      <BaseBtn type="submit" text="Forgot Password" />
     </form>
     <FlashMessage :message="message" :error="error" />
   </div>

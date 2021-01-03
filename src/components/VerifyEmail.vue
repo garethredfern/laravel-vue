@@ -1,7 +1,7 @@
 <template>
   <div>
-    <form>
-      <BaseBtn type="button" @click="sendVerification" text="Verify Email" />
+    <form @submit.prevent="sendVerification">
+      <BaseBtn type="submit" text="Verify Email" />
     </form>
     <FlashMessage :message="message" :error="error" />
   </div>

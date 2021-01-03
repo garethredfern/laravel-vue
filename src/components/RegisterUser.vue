@@ -1,7 +1,7 @@
 <template>
   <div class="max-w-sm p-5">
     <h2 class="mb-4 text-xl font-bold text-center">Register</h2>
-    <form class="p-5 border rounded">
+    <form @submit.prevent="registerUser" class="p-5 border rounded">
       <div class="mb-2">
         <label for="name" class="text-gray-500">Name</label>
         <input
@@ -40,7 +40,7 @@
           class="border rounded px-2.5 py-1.5 w-full"
         />
       </div>
-      <BaseBtn type="button" @click="registerUser" text="Register" />
+      <BaseBtn type="submit" text="Register" />
     </form>
     <FlashMessage :message="message" :error="error" />
   </div>
