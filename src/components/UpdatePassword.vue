@@ -1,7 +1,7 @@
 <template>
   <div class="max-w-sm p-5">
-    <h2 class="font-bold text-lg text-center mb-2">Update Password</h2>
-    <form class="border p-5 rounded">
+    <h2 class="mb-2 text-lg font-bold text-center">Update Password</h2>
+    <form class="p-5 border rounded">
       <div class="mb-2">
         <label for="password" class="text-gray-500">Current Password</label>
         <input

@@ -1,9 +1,9 @@
 <template>
   <div class="max-w-sm p-5">
-    <h2 class="font-bold text-lg text-center mb-2">User Details</h2>
-    <div class="border p-5 rounded">
+    <h2 class="mb-2 text-lg font-bold text-center">User Details</h2>
+    <div class="p-5 border rounded">
       <ul>
-        <li class="font-bold mb-1">{{ authUser.name }}</li>
+        <li class="mb-1 font-bold">{{ authUser.name }}</li>
         <li>Email: {{ authUser.email }}</li>
         <li v-if="authUser.email_verified_at" class="text-gray-500">
           Emailed Verified

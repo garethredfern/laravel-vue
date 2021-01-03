@@ -1,6 +1,6 @@
 <template>
-  <header class="p-5 bg-blue-400 text-white">
-    <nav class="container mx-auto flex justify-between items-center">
+  <header class="p-5 text-white bg-blue-400">
+    <nav class="container flex items-center justify-between mx-auto">
       <router-link to="/">Home</router-link>
       <div class="flex space-x-4" v-if="authUser">
         <router-link to="/dashboard">Dashboard</router-link>

@@ -1,9 +1,9 @@
 <template>
   <div>
-    <p v-if="message" class="mt-2 text-green-500 text-sm">
+    <p v-if="message" class="mt-2 text-sm text-green-500">
       {{ message }}
     </p>
-    <p v-if="error" class="mt-2 text-red-500 text-sm">
+    <p v-if="error" class="mt-2 text-sm text-red-500">
       {{ error }}
     </p>
   </div>

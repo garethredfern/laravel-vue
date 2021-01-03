@@ -1,7 +1,7 @@
 <template>
   <div class="max-w-sm p-5 m-auto">
-    <h2 class="font-bold text-xl text-center mb-4">Forgot Password</h2>
-    <form class="border p-5 rounded">
+    <h2 class="mb-4 text-xl font-bold text-center">Forgot Password</h2>
+    <form class="p-5 border rounded">
       <div class="mb-4">
         <input
           type="email"
