@@ -15,6 +15,7 @@
     "vuex": "^3.6.0"
   },
   "devDependencies": {
+    "@tailwindcss/forms": "^0.2.1",
     "@tailwindcss/postcss7-compat": "^2.0.2",
     "@vue/cli-plugin-babel": "^4.5.9",
     "@vue/cli-plugin-eslint": "^4.5.9",
