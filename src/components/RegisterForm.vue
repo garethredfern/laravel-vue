@@ -1,6 +1,5 @@
 <template>
   <div>
-    <h2 class="mb-4 text-xl font-bold text-center">Register</h2>
     <form @submit.prevent="registerUser" class="p-5 border rounded">
       <div class="mb-2">
         <label for="name" class="text-gray-500">Name</label>
@@ -53,7 +52,7 @@ import AuthService from "@/services/AuthService";
 import FlashMessage from "@/components/FlashMessage";
 
 export default {
-  name: "RegisterUser",
+  name: "RegisterForm",
   components: {
     BaseBtn,
     FlashMessage,
