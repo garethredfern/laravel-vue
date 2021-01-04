@@ -1,4 +1,4 @@
 export const getError = (error) => {
   console.debug({ error });
-  return error.response.data.errors ? error.response.data.errors : error;
+  return error.data.errors ? error.data.errors : error;
 };
