@@ -4,6 +4,7 @@
       <router-link to="/dashboard" v-if="authUser">Dashboard</router-link>
       <router-link to="/" v-else>Home</router-link>
       <div class="flex space-x-4" v-if="authUser">
+        <router-link to="/user">{{ authUser.name }}</router-link>
         <Logout />
       </div>
       <router-link to="/login" v-else>Login</router-link>
