@@ -1,3 +1,4 @@
+import router from "@/router";
 import { getError } from "@/utils/helpers";
 import AuthService from "@/services/AuthService";
 
@@ -29,9 +30,9 @@ export const actions = {
     return AuthService.logout()
       .then(() => {
         commit("SET_USER", null);
+        router.push({ path: "/login" });
       })
       .catch((error) => {
-        commit("SET_USER", null);
         commit("SET_ERROR", getError(error));
       });
   },
