@@ -1,9 +1,14 @@
 <template>
   <div class="max-w-sm">
     <h2 class="mb-2 text-lg font-bold text-center">Update Password</h2>
-    <form @submit.prevent="updatePassword" class="p-5 border rounded">
+    <form
+      @submit.prevent="updatePassword"
+      class="p-5 bg-white border rounded shadow"
+    >
       <div class="mb-2">
-        <label for="password" class="text-gray-500">Current Password</label>
+        <label for="password" class="text-sm text-gray-500"
+          >Current Password</label
+        >
         <input
           type="password"
           id="current-password"
@@ -12,7 +17,7 @@
         />
       </div>
       <div class="mb-2">
-        <label for="password" class="text-gray-500">Password</label>
+        <label for="password" class="text-sm text-gray-500">Password</label>
         <input
           type="password"
           id="password"
@@ -21,7 +26,7 @@
         />
       </div>
       <div class="mb-4">
-        <label for="password-confirm" class="text-gray-500"
+        <label for="password-confirm" class="text-sm text-gray-500"
           >Confirm Password</label
         >
         <input

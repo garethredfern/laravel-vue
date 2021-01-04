@@ -1,8 +1,8 @@
 <template>
   <div class="max-w-sm">
-    <form @submit.prevent="login" class="p-5 border rounded">
+    <form @submit.prevent="login" class="p-5 bg-white border rounded shadow">
       <div class="mb-2">
-        <label for="email" class="text-gray-500">Email</label>
+        <label for="email" class="text-sm text-gray-500">Email</label>
         <input
           type="email"
           id="email"
@@ -12,7 +12,7 @@
         />
       </div>
       <div class="mb-4">
-        <label for="password" class="text-gray-500">Password</label>
+        <label for="password" class="text-sm text-gray-500">Password</label>
         <input
           type="password"
           id="password"
@@ -22,7 +22,7 @@
       </div>
       <div class="flex justify-between">
         <BaseBtn type="submit" text="Login" />
-        <router-link to="/forgot-password" class="text-gray-500"
+        <router-link to="/forgot-password" class="text-sm text-gray-500"
           >Forgot Password</router-link
         >
       </div>

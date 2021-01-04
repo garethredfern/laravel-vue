@@ -1,7 +1,7 @@
 <template>
   <div class="max-w-sm">
     <h2 class="mb-2 text-lg font-bold text-center">User Details</h2>
-    <div class="p-5 border rounded">
+    <div class="p-5 bg-white border rounded shadow">
       <ul>
         <li class="mb-1 font-bold">{{ authUser.name }}</li>
         <li>Email: {{ authUser.email }}</li>

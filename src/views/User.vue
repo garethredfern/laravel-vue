@@ -1,6 +1,6 @@
 <template>
   <div class="py-5">
-    <div class="flex space-x-10">
+    <div class="grid gap-10 md:grid-cols-3">
       <AuthUser />
       <UpdatePassword />
     </div>

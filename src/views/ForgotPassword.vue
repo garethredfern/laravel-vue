@@ -1,9 +1,12 @@
 <template>
   <div class="max-w-sm p-5 m-auto">
     <h2 class="mb-4 text-xl font-bold text-center">Forgot Password</h2>
-    <form @submit.prevent="forgotPassword" class="p-5 border rounded">
+    <form
+      @submit.prevent="forgotPassword"
+      class="p-5 bg-white border rounded shadow"
+    >
       <div class="mb-4">
-        <label for="email" class="text-gray-500">Email</label>
+        <label for="email" class="text-sm text-gray-500">Email</label>
         <input
           type="email"
           id="email"

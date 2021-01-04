@@ -1,9 +1,12 @@
 <template>
   <div class="max-w-sm p-5 m-auto">
     <h2 class="mb-4 text-xl font-bold text-center">Reset Password</h2>
-    <form @submit.prevent="resetPassword" class="p-5 border rounded">
+    <form
+      @submit.prevent="resetPassword"
+      class="p-5 bg-white border rounded shadow"
+    >
       <div class="mb-2">
-        <label for="email" class="text-gray-500">Email</label>
+        <label for="email" class="text-sm text-gray-500">Email</label>
         <input
           type="email"
           id="email"
@@ -12,7 +15,7 @@
         />
       </div>
       <div class="mb-2">
-        <label for="password" class="text-gray-500">Password</label>
+        <label for="password" class="text-sm text-gray-500">Password</label>
         <input
           type="password"
           id="password"
@@ -21,7 +24,7 @@
         />
       </div>
       <div class="mb-4">
-        <label for="password-confirm" class="text-gray-500"
+        <label for="password-confirm" class="text-sm text-gray-500"
           >Confirm Password</label
         >
         <input

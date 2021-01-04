@@ -1,8 +1,11 @@
 <template>
   <div>
-    <form @submit.prevent="registerUser" class="p-5 border rounded">
+    <form
+      @submit.prevent="registerUser"
+      class="p-5 bg-white border rounded shadow"
+    >
       <div class="mb-2">
-        <label for="name" class="text-gray-500">Name</label>
+        <label for="name" class="text-sm text-gray-500">Name</label>
         <input
           type="text"
           id="name"
@@ -11,7 +14,7 @@
         />
       </div>
       <div class="mb-2">
-        <label for="email" class="text-gray-500">Email</label>
+        <label for="email" class="text-sm text-gray-500">Email</label>
         <input
           type="email"
           id="email"
@@ -20,7 +23,7 @@
         />
       </div>
       <div class="mb-2">
-        <label for="password" class="text-gray-500">Password</label>
+        <label for="password" class="text-sm text-gray-500">Password</label>
         <input
           type="password"
           id="password"
@@ -29,7 +32,7 @@
         />
       </div>
       <div class="mb-4">
-        <label for="password-confirm" class="text-gray-500"
+        <label for="password-confirm" class="text-sm text-gray-500"
           >Confirm Password</label
         >
         <input
