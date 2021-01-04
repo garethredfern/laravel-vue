@@ -44,8 +44,8 @@ export default {
   },
   data() {
     return {
-      email: "luke@jedi.com",
-      password: "password",
+      email: null,
+      password: null,
       error: null,
     };
   },

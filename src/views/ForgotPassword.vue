@@ -29,7 +29,7 @@ export default {
   },
   data() {
     return {
-      email: "luke@jedi.com",
+      email: null,
       error: null,
       message: null,
     };
