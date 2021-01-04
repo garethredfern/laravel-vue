@@ -1,26 +1,22 @@
 <template>
   <div class="max-w-sm">
     <form @submit.prevent="login" class="p-5 bg-white border rounded shadow">
-      <div class="mb-2">
-        <label for="email" class="text-sm text-gray-500">Email</label>
-        <input
-          type="email"
-          id="email"
-          v-model="email"
-          placeholder="luke@jedi.com"
-          autocomplete="email"
-          class="block w-full px-3 py-2 placeholder-gray-400 border border-gray-300 rounded-md shadow-sm appearance-none focus:outline-none focus:ring-blue-500 focus:border-blue-500"
-        />
-      </div>
-      <div class="mb-4">
-        <label for="password" class="text-sm text-gray-500">Password</label>
-        <input
-          type="password"
-          id="password"
-          v-model="password"
-          class="block w-full px-3 py-2 placeholder-gray-400 border border-gray-300 rounded-md shadow-sm appearance-none focus:outline-none focus:ring-blue-500 focus:border-blue-500"
-        />
-      </div>
+      <BaseInput
+        type="email"
+        label="Email"
+        name="email"
+        v-model="email"
+        autocomplete="email"
+        placeholder="luke@jedi.com"
+        class="mb-2"
+      />
+      <BaseInput
+        type="password"
+        label="Password"
+        name="password"
+        v-model="password"
+        class="mb-4"
+      />
       <div class="flex justify-between">
         <BaseBtn type="submit" text="Login" />
         <router-link
@@ -37,6 +33,7 @@
 <script>
 import { getError } from "@/utils/helpers";
 import BaseBtn from "@/components/BaseBtn";
+import BaseInput from "@/components/BaseInput";
 import AuthService from "@/services/AuthService";
 import FlashMessage from "@/components/FlashMessage";
 
@@ -44,6 +41,7 @@ export default {
   name: "LoginView",
   components: {
     BaseBtn,
+    BaseInput,
     FlashMessage,
   },
   data() {
