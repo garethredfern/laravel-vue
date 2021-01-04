@@ -1,5 +1,5 @@
 <template>
-  <div class="max-w-sm p-5">
+  <div class="max-w-sm">
     <h2 class="mb-2 text-lg font-bold text-center">Update Password</h2>
     <form @submit.prevent="updatePassword" class="p-5 border rounded">
       <div class="mb-2">

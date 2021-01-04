@@ -1,5 +1,5 @@
 <template>
-  <div class="max-w-sm p-5 m-auto">
+  <div class="max-w-sm">
     <form @submit.prevent="login" class="p-5 border rounded">
       <div class="mb-2">
         <label for="email" class="text-gray-500">Email</label>
