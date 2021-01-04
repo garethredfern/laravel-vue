@@ -18,6 +18,12 @@ const routes = [
       import(/* webpackChunkName: "dashboard" */ "../views/Dashboard"),
   },
   {
+    path: "/user",
+    name: "user",
+    meta: { requiresAuth: true },
+    component: () => import(/* webpackChunkName: "user" */ "../views/User"),
+  },
+  {
     path: "/login",
     name: "login",
     component: () => import(/* webpackChunkName: "login" */ "../views/Login"),
