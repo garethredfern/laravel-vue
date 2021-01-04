@@ -7,6 +7,7 @@
           type="email"
           id="email"
           v-model="email"
+          placeholder="luke@jedi.com"
           class="border rounded px-2.5 py-1.5 w-full"
         />
       </div>

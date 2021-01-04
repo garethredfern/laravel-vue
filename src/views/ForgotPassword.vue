@@ -3,9 +3,12 @@
     <h2 class="mb-4 text-xl font-bold text-center">Forgot Password</h2>
     <form @submit.prevent="forgotPassword" class="p-5 border rounded">
       <div class="mb-4">
+        <label for="email" class="text-gray-500">Email</label>
         <input
           type="email"
+          id="email"
           v-model="email"
+          placeholder="luke@jedi.com"
           class="border rounded px-2.5 py-1.5 w-full"
         />
       </div>
