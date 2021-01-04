@@ -23,8 +23,10 @@
       </div>
       <div class="flex justify-between">
         <BaseBtn type="submit" text="Login" />
-        <router-link to="/forgot-password" class="text-sm text-gray-500"
-          >Forgot Password</router-link
+        <router-link
+          to="/forgot-password"
+          class="text-sm text-blue-500 transition hover:text-blue-600"
+          >Forgot your password?</router-link
         >
       </div>
     </form>
