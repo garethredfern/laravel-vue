@@ -50,4 +50,7 @@ export default {
   async sendVerification(payload) {
     await authClient.post("/email/verification-notification", payload);
   },
+  async updateUser(payload) {
+    await authClient.put("/user/profile-information", payload);
+  },
 };
