@@ -1,33 +1,31 @@
 <template>
-  <div class="max-w-sm">
-    <form @submit.prevent="login" class="p-5 bg-white border rounded shadow">
-      <BaseInput
-        type="email"
-        label="Email"
-        name="email"
-        v-model="email"
-        autocomplete="email"
-        placeholder="luke@jedi.com"
-        class="mb-2"
-      />
-      <BaseInput
-        type="password"
-        label="Password"
-        name="password"
-        v-model="password"
-        class="mb-4"
-      />
-      <div class="flex justify-between">
-        <BaseBtn type="submit" text="Login" />
-        <router-link
-          to="/forgot-password"
-          class="text-sm text-blue-500 transition hover:text-blue-600"
-          >Forgot your password?</router-link
-        >
-      </div>
-    </form>
+  <form @submit.prevent="login" class="p-5 bg-white border rounded shadow">
+    <BaseInput
+      type="email"
+      label="Email"
+      name="email"
+      v-model="email"
+      autocomplete="email"
+      placeholder="luke@jedi.com"
+      class="mb-2"
+    />
+    <BaseInput
+      type="password"
+      label="Password"
+      name="password"
+      v-model="password"
+      class="mb-4"
+    />
+    <div class="flex justify-between">
+      <BaseBtn type="submit" text="Login" />
+      <router-link
+        to="/forgot-password"
+        class="text-sm text-blue-500 transition hover:text-blue-600"
+        >Forgot your password?</router-link
+      >
+    </div>
     <FlashMessage :message="message" :error="error" />
-  </div>
+  </form>
 </template>
 
 <script>
