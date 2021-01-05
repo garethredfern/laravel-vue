@@ -5,7 +5,7 @@
     <p class="mt-2 text-center text-gray-500">
       <router-link
         to="/register"
-        class="text-blue-500 transition hover:text-blue-600"
+        class="text-pink-500 transition hover:text-pink-600"
         >Register for an account</router-link
       >
     </p>
