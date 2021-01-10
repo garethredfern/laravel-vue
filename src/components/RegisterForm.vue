@@ -1,8 +1,5 @@
 <template>
-  <form
-    @submit.prevent="registerUser"
-    class="p-5 bg-white border rounded shadow"
-  >
+  <form @submit.prevent="registerUser">
     <div class="mb-2">
       <label for="name" class="text-sm text-gray-500">Name</label>
       <input

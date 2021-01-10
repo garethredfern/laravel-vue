@@ -1,5 +1,5 @@
 <template>
-  <form @submit.prevent="login" class="p-5 bg-white border rounded shadow">
+  <form @submit.prevent="login">
     <BaseInput
       type="email"
       label="Email"
