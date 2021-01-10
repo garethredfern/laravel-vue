@@ -4,7 +4,7 @@
       <p>Welcome to the Laravel Vue Demo app.</p>
       <p>
         You can register for an account
-        <router-link to="/register" class="text-blue-500">here</router-link>.
+        <router-link to="/register" class="base-link">here</router-link>.
       </p>
     </article>
     <article class="p-5 mt-5 text-lg text-center bg-white border rounded">
