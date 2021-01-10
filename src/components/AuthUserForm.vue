@@ -1,5 +1,5 @@
 <template>
-  <form @submit.prevent="updateUser" class="p-5 bg-white border rounded shadow">
+  <form @submit.prevent="updateUser">
     <BaseInput
       type="text"
       label="Name"

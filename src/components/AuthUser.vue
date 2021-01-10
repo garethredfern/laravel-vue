@@ -1,5 +1,5 @@
 <template>
-  <div class="p-5 bg-white border rounded shadow">
+  <div>
     <ul>
       <li class="mb-1 font-bold">{{ authUser.name }}</li>
       <li>Email: {{ authUser.email }}</li>
