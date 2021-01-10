@@ -5,17 +5,16 @@
       @submit.prevent="forgotPassword"
       class="p-5 bg-white border rounded shadow"
     >
-      <div class="mb-4">
-        <label for="email" class="text-sm text-gray-500">Email</label>
-        <input
-          type="email"
-          id="email"
-          v-model="email"
-          placeholder="luke@jedi.com"
-          class="block w-full px-3 py-2 placeholder-gray-400 border border-gray-300 rounded-md shadow-sm appearance-none focus:outline-none focus:ring-blue-500 focus:border-blue-500"
-        />
-      </div>
-      <BaseBtn type="submit" text="Forgot Password" />
+      <BaseInput
+        type="email"
+        label="Email"
+        name="email"
+        v-model="email"
+        autocomplete="email"
+        placeholder="luke@jedi.com"
+        class="mb-4"
+      />
+      <BaseBtn type="submit" text="Send" />
     </form>
     <FlashMessage :message="message" :error="error" />
   </div>
@@ -24,6 +23,7 @@
 <script>
 import { getError } from "@/utils/helpers";
 import BaseBtn from "@/components/BaseBtn";
+import BaseInput from "@/components/BaseInput";
 import AuthService from "@/services/AuthService";
 import FlashMessage from "@/components/FlashMessage";
 
@@ -31,6 +31,7 @@ export default {
   name: "ForgotPassword",
   components: {
     BaseBtn,
+    BaseInput,
     FlashMessage,
   },
   data() {
