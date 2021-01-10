@@ -1,8 +1,6 @@
 /*
  * This is the initial API interface
  * we set the base URL for the API
- * store the token in local storage
- * append the token to all requests
  ? Both request & response are logged to the console.
  ! Remove the console logs for production.
 */
