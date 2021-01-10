@@ -10,6 +10,7 @@ import store from "@/store/index";
 
 export const apiClient = axios.create({
   baseURL: process.env.VUE_APP_API_URL + "/api",
+  withCredentials: true, // required to handle the CSRF token
 });
 
 /*
