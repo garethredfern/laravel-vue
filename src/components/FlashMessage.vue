@@ -18,7 +18,7 @@ export default {
       default: null,
     },
     error: {
-      type: [Object, String],
+      type: [Error, String],
       default: null,
     },
   },
