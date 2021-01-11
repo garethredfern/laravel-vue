@@ -24,6 +24,6 @@ apiClient.interceptors.response.use(
     if (error.response.status === 401 || error.response.status === 419) {
       store.dispatch("auth/logout");
     }
-    return Promise.reject(error.response);
+    return Promise.reject(error);
   }
 );
