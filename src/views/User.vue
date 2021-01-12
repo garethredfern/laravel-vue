@@ -6,6 +6,8 @@
       <UpdatePassword class="p-5 bg-white border rounded shadow" />
       <FileUpload
         label="Upload Avatar"
+        :fileTypes="['image/*']"
+        endpoint="/users/auth/avatar"
         class="p-5 bg-white border rounded shadow"
       />
     </div>

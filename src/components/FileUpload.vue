@@ -1,24 +1,25 @@
 <template>
   <form @submit.prevent="uploadFile">
-    <BaseInput
-      type="file"
-      :label="label"
-      name="file"
-      v-model="file"
-      :accept="fileTypes"
-      class="mb-4"
-    />
-    <div>
-      <BaseBtn text="Upload" />
+    <div class="mb-4">
+      <label for="file" class="sr-only">
+        {{ label }}
+      </label>
+      <input
+        type="file"
+        :accept="fileTypes"
+        @change="fileChange"
+        id="file"
+        class="appearance-none"
+      />
     </div>
-    <FlashMessage :error="error" />
+    <BaseBtn text="Upload" />
+    <FlashMessage :message="message" :error="error" />
   </form>
 </template>
 
 <script>
 import { getError } from "@/utils/helpers";
 import BaseBtn from "@/components/BaseBtn";
-import BaseInput from "@/components/BaseInput";
 import FileService from "@/services/FileService";
 import FlashMessage from "@/components/FlashMessage";
 
@@ -29,6 +30,10 @@ export default {
       type: Array,
       default: null,
     },
+    endpoint: {
+      type: String,
+      required: true,
+    },
     label: {
       type: String,
       default: "",
@@ -36,7 +41,6 @@ export default {
   },
   components: {
     BaseBtn,
-    BaseInput,
     FlashMessage,
   },
   data() {
@@ -47,8 +51,21 @@ export default {
     };
   },
   methods: {
+    clearMessage() {
+      this.error = null;
+      this.message = null;
+    },
+    fileChange(event) {
+      this.clearMessage();
+      this.file = event.target.files[0];
+    },
     uploadFile() {
       const payload = {};
+      const formData = new FormData();
+      formData.append("file", this.file);
+      payload.file = formData;
+      payload.endpoint = this.endpoint;
+      this.clearMessage();
       FileService.uploadFile(payload)
         .then(() => (this.message = "File uploaded."))
         .catch((error) => (this.error = getError(error)));
