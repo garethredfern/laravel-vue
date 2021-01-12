@@ -4,13 +4,7 @@
       <label for="file" class="sr-only">
         {{ label }}
       </label>
-      <input
-        type="file"
-        :accept="fileTypes"
-        @change="fileChange"
-        id="file"
-        class="appearance-none"
-      />
+      <input type="file" :accept="fileTypes" @change="fileChange" id="file" />
     </div>
     <BaseBtn text="Upload" />
     <FlashMessage :message="message" :error="error" />
