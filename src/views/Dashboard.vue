@@ -1,5 +1,5 @@
 <template>
-  <div class="py-5">
+  <div class="p-5">
     <p class="mb-4 text-gray-400">
       Full documentation for how this application is built can be found at
       <a href="https://laravelvuespa.com/" class="base-link"
