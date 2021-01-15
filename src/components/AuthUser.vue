@@ -1,5 +1,11 @@
 <template>
   <div>
+    <img
+      :src="authUser.avatar"
+      class="w-16 h-16 rounded-full lg:w-20 lg:h-20"
+      alt=""
+      v-if="authUser.avatar"
+    />
     <ul>
       <li class="mb-1 font-bold">{{ authUser.name }}</li>
       <li>Email: {{ authUser.email }}</li>
