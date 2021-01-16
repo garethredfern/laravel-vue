@@ -28,7 +28,7 @@
     <transition name="fade">
       <FlashMessage :error="error" v-if="error" key="error" />
     </transition>
-    <div class="py-2 text-center" v-if="meta && meta.last_page > 1">
+    <div class="py-4 text-center" v-if="meta && meta.last_page > 1">
       <p class="text-sm">
         Page {{ meta.current_page }} of {{ meta.last_page }}
       </p>
@@ -39,8 +39,17 @@
 
 <script>
 import { mapGetters } from "vuex";
+import store from "@/store/index";
 import FlashMessage from "@/components/FlashMessage";
 import UserPagination from "@/components/UserPagination";
+
+function fetchUsers(to, next) {
+  const currentPage = parseInt(to.query.page) || 1;
+  store.dispatch("user/getUsers", currentPage).then(() => {
+    to.params.page = currentPage;
+    next();
+  });
+}
 
 export default {
   name: "UsersView",
@@ -48,8 +57,11 @@ export default {
   computed: {
     ...mapGetters("user", ["loading", "error", "users", "meta"]),
   },
-  created() {
-    this.$store.dispatch("user/getUsers");
+  beforeRouteEnter(to, from, next) {
+    fetchUsers(to, next);
+  },
+  beforeRouteUpdate(to, from, next) {
+    fetchUsers(to, next);
   },
 };
 </script>

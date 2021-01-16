@@ -49,9 +49,9 @@ export const actions = {
         commit("SET_ERROR", getError(error));
       });
   },
-  getUsers({ commit }) {
+  getUsers({ commit }, page) {
     commit("SET_LOADING", true);
-    UserService.getUsers()
+    UserService.getUsers(page)
       .then((response) => {
         commit("SET_USERS", response.data.data);
         if (response.data.meta) {
