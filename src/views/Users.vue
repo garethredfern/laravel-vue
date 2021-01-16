@@ -43,7 +43,7 @@ import store from "@/store/index";
 import FlashMessage from "@/components/FlashMessage";
 import UserPagination from "@/components/UserPagination";
 
-function fetchUsers(to, next) {
+function getUsers(to, next) {
   const currentPage = parseInt(to.query.page) || 1;
   store.dispatch("user/getUsers", currentPage).then(() => {
     to.params.page = currentPage;
@@ -58,10 +58,10 @@ export default {
     ...mapGetters("user", ["loading", "error", "users", "meta"]),
   },
   beforeRouteEnter(to, from, next) {
-    fetchUsers(to, next);
+    getUsers(to, next);
   },
   beforeRouteUpdate(to, from, next) {
-    fetchUsers(to, next);
+    getUsers(to, next);
   },
 };
 </script>
