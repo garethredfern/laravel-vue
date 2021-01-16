@@ -62,11 +62,8 @@ router.beforeEach((to, from, next) => {
 
   if (reqAuth && !authUser) {
     store.dispatch("auth/getAuthUser").then(() => {
-      if (!store.getters["auth/authUser"]) {
-        next(loginQuery);
-      } else {
-        next();
-      }
+      if (!store.getters["auth/authUser"]) next(loginQuery);
+      else next();
     });
   } else {
     next(); // make sure to always call next()!
