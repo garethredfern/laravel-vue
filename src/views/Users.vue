@@ -28,18 +28,25 @@
     <transition name="fade">
       <FlashMessage :error="error" v-if="error" key="error" />
     </transition>
+    <div class="py-2 text-center" v-if="meta && meta.last_page > 1">
+      <p class="text-sm">
+        Page {{ meta.current_page }} of {{ meta.last_page }}
+      </p>
+      <UserPagination />
+    </div>
   </div>
 </template>
 
 <script>
 import { mapGetters } from "vuex";
 import FlashMessage from "@/components/FlashMessage";
+import UserPagination from "@/components/UserPagination";
 
 export default {
-  components: { FlashMessage },
   name: "UsersView",
+  components: { FlashMessage, UserPagination },
   computed: {
-    ...mapGetters("user", ["loading", "error", "users"]),
+    ...mapGetters("user", ["loading", "error", "users", "meta"]),
   },
   created() {
     this.$store.dispatch("user/getUsers");

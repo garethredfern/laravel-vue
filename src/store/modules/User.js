@@ -19,6 +19,12 @@ export const mutations = {
   SET_USERS(state, users) {
     state.users = users;
   },
+  SET_META(state, meta) {
+    state.meta = meta;
+  },
+  SET_LINKS(state, links) {
+    state.links = links;
+  },
   SET_LOADING(state, loading) {
     state.loading = loading;
   },
@@ -48,6 +54,12 @@ export const actions = {
     UserService.getUsers()
       .then((response) => {
         commit("SET_USERS", response.data.data);
+        if (response.data.meta) {
+          commit("SET_META", response.data.meta);
+        }
+        if (response.data.links) {
+          commit("SET_LINKS", response.data.links);
+        }
         commit("SET_LOADING", false);
       })
       .catch((error) => {
@@ -63,6 +75,9 @@ export const getters = {
   },
   users: (state) => {
     return state.users;
+  },
+  meta: (state) => {
+    return state.meta;
   },
   loading: (state) => {
     return state.loading;

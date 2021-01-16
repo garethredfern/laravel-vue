@@ -4,7 +4,7 @@ export default {
   getUser(userId) {
     return API.apiClient.get(`/users/${userId}`);
   },
-  getUsers() {
-    return API.apiClient.get("/users");
+  getUsers(page = 1) {
+    return API.apiClient.get(`/users/?page=${page}`);
   },
 };
