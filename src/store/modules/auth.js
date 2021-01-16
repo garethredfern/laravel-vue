@@ -55,6 +55,9 @@ export const getters = {
   authUser: (state) => {
     return state.user;
   },
+  isAdmin: (state) => {
+    return state.user.isAdmin;
+  },
   error: (state) => {
     return state.error;
   },
