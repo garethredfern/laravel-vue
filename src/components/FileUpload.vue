@@ -61,7 +61,10 @@ export default {
       payload.endpoint = this.endpoint;
       this.clearMessage();
       FileService.uploadFile(payload)
-        .then(() => (this.message = "File uploaded."))
+        .then(() => {
+          this.message = "File uploaded.";
+          this.$emit("fileUploaded");
+        })
         .catch((error) => (this.error = getError(error)));
     },
   },

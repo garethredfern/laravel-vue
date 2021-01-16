@@ -8,6 +8,7 @@
         label="Upload Avatar"
         :fileTypes="['image/*']"
         endpoint="/users/auth/avatar"
+        @fileUploaded="updateUser"
         class="p-5 bg-white border rounded shadow"
       />
     </div>
@@ -21,12 +22,17 @@ import AuthUserForm from "@/components/AuthUserForm";
 import UpdatePassword from "@/components/UpdatePassword";
 
 export default {
-  name: "Dashboard",
+  name: "UserView",
   components: {
     AuthUser,
     FileUpload,
     AuthUserForm,
     UpdatePassword,
+  },
+  methods: {
+    updateUser() {
+      this.$store.dispatch("auth/getAuthUser");
+    },
   },
 };
 </script>
