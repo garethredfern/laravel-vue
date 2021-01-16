@@ -21,7 +21,7 @@ export default {
   },
   methods: {
     firstPage() {
-      this.$store.dispatch("user/getUsers", this.links.first).then(() => {
+      this.$store.dispatch("user/paginateUsers", this.links.first).then(() => {
         this.$router.push({
           path: "users",
           query: { page: 1 },
@@ -29,7 +29,7 @@ export default {
       });
     },
     prevPage() {
-      this.$store.dispatch("user/getUsers", this.links.prev).then(() => {
+      this.$store.dispatch("user/paginateUsers", this.links.prev).then(() => {
         this.$router.push({
           path: "users",
           query: { page: this.meta.current_page },
@@ -37,7 +37,7 @@ export default {
       });
     },
     nextPage() {
-      this.$store.dispatch("user/getUsers", this.links.next).then(() => {
+      this.$store.dispatch("user/paginateUsers", this.links.next).then(() => {
         this.$router.push({
           path: "users",
           query: { page: this.meta.current_page },
@@ -45,7 +45,7 @@ export default {
       });
     },
     lastPage() {
-      this.$store.dispatch("user/getUsers", this.links.last).then(() => {
+      this.$store.dispatch("user/paginateUsers", this.links.last).then(() => {
         this.$router.push({
           path: "users",
           query: { page: this.meta.last_page },

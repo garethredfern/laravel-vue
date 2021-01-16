@@ -67,6 +67,24 @@ export const actions = {
         commit("SET_ERROR", getError(error));
       });
   },
+  paginateUsers({ commit }, link) {
+    commit("SET_LOADING", true);
+    UserService.paginateUsers(link)
+      .then((response) => {
+        commit("SET_USERS", response.data.data);
+        if (response.data.meta) {
+          commit("SET_META", response.data.meta);
+        }
+        if (response.data.links) {
+          commit("SET_LINKS", response.data.links);
+        }
+        commit("SET_LOADING", false);
+      })
+      .catch((error) => {
+        commit("SET_LOADING", false);
+        commit("SET_ERROR", getError(error));
+      });
+  },
 };
 
 export const getters = {
