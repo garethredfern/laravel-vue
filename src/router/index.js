@@ -24,6 +24,16 @@ const routes = [
     component: () => import(/* webpackChunkName: "user" */ "../views/User"),
   },
   {
+    path: "/users",
+    name: "users",
+    meta: { requiresAuth: true },
+    component: () => import(/* webpackChunkName: "users" */ "../views/Users"),
+    beforeEnter: (to, from, next) => {
+      if (store.getters["auth/isAdmin"]) next();
+      else next(false);
+    },
+  },
+  {
     path: "/login",
     name: "login",
     component: () => import(/* webpackChunkName: "login" */ "../views/Login"),
