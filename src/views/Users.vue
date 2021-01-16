@@ -4,7 +4,7 @@
       <li
         v-for="user in users"
         :key="user.id"
-        class="flex items-center justify-between pb-2 border-b"
+        class="flex items-center justify-between py-2 border-b"
       >
         <div class="flex items-center">
           <img
