@@ -47,7 +47,6 @@ export const actions = {
     commit("SET_LOADING", true);
     UserService.getUsers()
       .then((response) => {
-        console.log(response);
         commit("SET_USERS", response.data.data);
         commit("SET_LOADING", false);
       })

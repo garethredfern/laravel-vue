@@ -1,7 +1,10 @@
 <template>
   <header class="p-5 text-white bg-blue-400">
     <nav class="container flex items-center justify-between mx-auto">
-      <router-link to="/dashboard" v-if="authUser">Dashboard</router-link>
+      <div v-if="authUser" class="flex items-center space-x-5">
+        <router-link to="/dashboard">Dashboard</router-link>
+        <router-link to="/users" v-if="isAdmin">Users</router-link>
+      </div>
       <router-link to="/" v-else>Home</router-link>
       <div class="flex space-x-4" v-if="authUser">
         <router-link to="/user">{{ authUser.name }}</router-link>
@@ -22,7 +25,7 @@ export default {
     Logout,
   },
   computed: {
-    ...mapGetters("auth", ["authUser"]),
+    ...mapGetters("auth", ["authUser", "isAdmin"]),
   },
 };
 </script>
