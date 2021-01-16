@@ -32,7 +32,7 @@ export default {
       this.$store.dispatch("user/paginateUsers", this.links.prev).then(() => {
         this.$router.push({
           path: "users",
-          query: { page: this.meta.current_page },
+          query: { page: this.meta.current_page - 1 },
         });
       });
     },
@@ -40,7 +40,7 @@ export default {
       this.$store.dispatch("user/paginateUsers", this.links.next).then(() => {
         this.$router.push({
           path: "users",
-          query: { page: this.meta.current_page },
+          query: { page: this.meta.current_page + 1 },
         });
       });
     },
