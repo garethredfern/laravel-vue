@@ -1,5 +1,5 @@
 <template>
-  <div class="p-5">
+  <div class="p-5 xl:px-0">
     <transition name="fade" mode="out-in">
       <FlashMessage
         message="loading..."
