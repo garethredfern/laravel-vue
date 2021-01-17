@@ -39,7 +39,12 @@
       <p class="text-sm">
         Page {{ meta.current_page }} of {{ meta.last_page }}
       </p>
-      <UserPagination />
+      <BasePagination
+        path="users"
+        :meta="meta"
+        :links="links"
+        action="user/paginateUsers"
+      />
     </div>
   </div>
 </template>
@@ -50,7 +55,7 @@ import store from "@/store/index";
 import MailIcon from "@/components/icons/MailIcon";
 import FlashMessage from "@/components/FlashMessage";
 import AvatarIcon from "@/components/icons/AvatarIcon";
-import UserPagination from "@/components/UserPagination";
+import BasePagination from "@/components/BasePagination";
 
 function getUsers(to, next) {
   const currentPage = parseInt(to.query.page) || 1;
@@ -62,9 +67,9 @@ function getUsers(to, next) {
 
 export default {
   name: "UsersView",
-  components: { FlashMessage, UserPagination, MailIcon, AvatarIcon },
+  components: { FlashMessage, BasePagination, MailIcon, AvatarIcon },
   computed: {
-    ...mapGetters("user", ["loading", "error", "users", "meta"]),
+    ...mapGetters("user", ["loading", "error", "users", "meta", "links"]),
   },
   beforeRouteEnter(to, from, next) {
     getUsers(to, next);

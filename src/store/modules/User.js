@@ -9,6 +9,7 @@ export const state = {
   meta: null,
   links: null,
   loading: false,
+  message: null,
   error: null,
 };
 

@@ -47,20 +47,55 @@
 <script>
 export default {
   props: {
-    links: Object,
+    action: {
+      type: String,
+      required: true,
+    },
+    path: {
+      type: String,
+      required: true,
+    },
+    meta: {
+      type: Object,
+      required: true,
+    },
+    links: {
+      type: Object,
+      required: true,
+    },
   },
   methods: {
     firstPage() {
-      this.$emit("firstPage");
+      this.$store.dispatch(this.action, this.links.first).then(() => {
+        this.$router.push({
+          path: this.path,
+          query: { page: 1 },
+        });
+      });
     },
     prevPage() {
-      this.$emit("prevPage");
+      this.$store.dispatch(this.action, this.links.prev).then(() => {
+        this.$router.push({
+          path: this.path,
+          query: { page: this.meta.current_page - 1 },
+        });
+      });
     },
     nextPage() {
-      this.$emit("nextPage");
+      this.$store.dispatch(this.action, this.links.next).then(() => {
+        this.$router.push({
+          path: this.path,
+          query: { page: this.meta.current_page + 1 },
+        });
+      });
     },
     lastPage() {
-      this.$emit("lastPage");
+      this.$store.dispatch(this.action, this.links.last).then(() => {
+        this.$router.push({
+          path: this.path,
+          query: { page: this.meta.last_page },
+        });
+      });
     },
   },
 };
