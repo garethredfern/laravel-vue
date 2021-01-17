@@ -11,11 +11,11 @@
     <ul>
       <li class="mb-1 font-bold">{{ authUser.name }}</li>
       <li>Email: {{ authUser.email }}</li>
-      <li v-if="authUser.email_verified_at" class="text-gray-500">
+      <li v-if="authUser.emailVerified" class="text-gray-500">
         Emailed Verified
       </li>
     </ul>
-    <VerifyEmail v-if="!authUser.email_verified_at" class="mt-4" />
+    <VerifyEmail v-if="!authUser.emailVerified" class="mt-4" />
   </div>
 </template>
 
