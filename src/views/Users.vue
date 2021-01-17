@@ -1,5 +1,5 @@
 <template>
-  <div class="p-5">
+  <div class="p-5 xl:px-0">
     <transition name="fade" mode="out-in">
       <FlashMessage
         message="loading..."
@@ -26,7 +26,7 @@
             :href="`mailto:${user.email}`"
             class="inline-flex items-center space-x-2"
           >
-            <span>{{ user.email }}</span>
+            <span class="hidden sm:inline">{{ user.email }}</span>
             <MailIcon class="w-8 h-8 text-gray-400" />
           </a>
         </li>
