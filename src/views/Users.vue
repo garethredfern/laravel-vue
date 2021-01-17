@@ -12,17 +12,20 @@
           :key="user.id"
           class="flex items-center justify-between py-2 border-b"
         >
-          <div class="flex items-center space-x-2">
+          <div class="inline-flex items-center space-x-2">
             <img
               v-if="user.avatar"
               :src="user.avatar"
-              class="w-12 h-12 rounded-full"
+              class="w-10 h-10 rounded-full"
               alt=""
             />
-            <AvatarIcon class="w-12 h-12 text-gray-400" v-else />
+            <AvatarIcon class="w-10 h-10 text-gray-400 rounded-full" v-else />
             <span class="text-gray-600">{{ user.name }}</span>
           </div>
-          <a :href="`mailto:${user.email}`" class="flex items-center space-x-2">
+          <a
+            :href="`mailto:${user.email}`"
+            class="inline-flex items-center space-x-2"
+          >
             <span>{{ user.email }}</span>
             <MailIcon class="w-8 h-8 text-gray-400" />
           </a>
