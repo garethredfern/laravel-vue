@@ -12,16 +12,20 @@
           :key="user.id"
           class="flex items-center justify-between py-2 border-b"
         >
-          <div class="flex items-center">
+          <div class="flex items-center space-x-2">
             <img
               v-if="user.avatar"
               :src="user.avatar"
-              class="w-12 h-12 mr-2 rounded-full"
+              class="w-12 h-12 rounded-full"
               alt=""
             />
-            <span class="mr-2 text-gray-600">{{ user.name }}</span>
+            <AvatarIcon class="w-12 h-12 text-gray-400" v-else />
+            <span class="text-gray-600">{{ user.name }}</span>
           </div>
-          <span>{{ user.email }}</span>
+          <a :href="`mailto:${user.email}`" class="flex items-center space-x-2">
+            <span>{{ user.email }}</span>
+            <MailIcon class="w-8 h-8 text-gray-400" />
+          </a>
         </li>
       </ul>
     </transition>
@@ -40,7 +44,9 @@
 <script>
 import { mapGetters } from "vuex";
 import store from "@/store/index";
+import MailIcon from "@/components/icons/MailIcon";
 import FlashMessage from "@/components/FlashMessage";
+import AvatarIcon from "@/components/icons/AvatarIcon";
 import UserPagination from "@/components/UserPagination";
 
 function getUsers(to, next) {
@@ -53,7 +59,7 @@ function getUsers(to, next) {
 
 export default {
   name: "UsersView",
-  components: { FlashMessage, UserPagination },
+  components: { FlashMessage, UserPagination, MailIcon, AvatarIcon },
   computed: {
     ...mapGetters("user", ["loading", "error", "users", "meta"]),
   },
