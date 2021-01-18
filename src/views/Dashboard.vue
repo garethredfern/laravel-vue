@@ -8,7 +8,7 @@
           <img
             v-if="authUser.avatar"
             :src="authUser.avatar"
-            class="w-10 h-10 rounded-farticlel"
+            class="w-10 h-10 rounded-full"
             alt=""
           />
           <AvatarIcon class="w-10 h-10 text-gray-400 rounded-full" v-else />
