@@ -8,12 +8,21 @@
         </router-link>
         <router-link to="/users" v-if="isAdmin">Users</router-link>
       </div>
-      <router-link to="/" v-else>Home</router-link>
+      <router-link to="/" v-else>
+        <HomeIcon class="w-6 h-6 text-white" />
+      </router-link>
       <div class="inline-flex items-center space-x-5" v-if="authUser">
         <router-link to="/user">{{ authUser.name }}</router-link>
         <Logout />
       </div>
-      <router-link to="/login" v-else>Login</router-link>
+      <router-link
+        v-else
+        to="/login"
+        class="inline-flex items-center space-x-2"
+      >
+        <span>Login</span>
+        <LoginIcon class="w-6 h-6 text-white" />
+      </router-link>
     </nav>
   </header>
 </template>
@@ -22,12 +31,14 @@
 import { mapGetters } from "vuex";
 import Logout from "@/components/Logout";
 import HomeIcon from "@/components/icons/HomeIcon";
+import LoginIcon from "@/components/icons/LoginIcon";
 
 export default {
   name: "Header",
   components: {
     Logout,
     HomeIcon,
+    LoginIcon,
   },
   computed: {
     ...mapGetters("auth", ["authUser", "isAdmin"]),
