@@ -3,6 +3,13 @@ import UserService from "@/services/UserService";
 
 export const namespaced = true;
 
+function setPaginatedUsers(commit, response) {
+  commit("SET_USERS", response.data.data);
+  commit("SET_META", response.data.meta);
+  commit("SET_LINKS", response.data.links);
+  commit("SET_LOADING", false);
+}
+
 export const state = {
   user: null,
   users: [],
@@ -54,14 +61,7 @@ export const actions = {
     commit("SET_LOADING", true);
     UserService.getUsers(page)
       .then((response) => {
-        commit("SET_USERS", response.data.data);
-        if (response.data.meta) {
-          commit("SET_META", response.data.meta);
-        }
-        if (response.data.links) {
-          commit("SET_LINKS", response.data.links);
-        }
-        commit("SET_LOADING", false);
+        setPaginatedUsers(commit, response);
       })
       .catch((error) => {
         commit("SET_LOADING", false);
@@ -72,14 +72,7 @@ export const actions = {
     commit("SET_LOADING", true);
     UserService.paginateUsers(link)
       .then((response) => {
-        commit("SET_USERS", response.data.data);
-        if (response.data.meta) {
-          commit("SET_META", response.data.meta);
-        }
-        if (response.data.links) {
-          commit("SET_LINKS", response.data.links);
-        }
-        commit("SET_LOADING", false);
+        setPaginatedUsers(commit, response);
       })
       .catch((error) => {
         commit("SET_LOADING", false);
