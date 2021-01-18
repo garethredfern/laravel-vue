@@ -27,7 +27,7 @@
             class="inline-flex items-center space-x-2"
           >
             <span class="hidden sm:inline">{{ user.email }}</span>
-            <MailIcon class="w-8 h-8 text-gray-400" />
+            <MailIcon class="w-8 h-8 text-gray-300" />
           </a>
         </li>
       </ul>
@@ -36,8 +36,11 @@
       <FlashMessage :error="error" v-if="error" key="error" />
     </transition>
     <transition name="fade">
-      <div class="py-4 text-center" v-if="meta && meta.last_page > 1">
-        <p class="text-sm">
+      <div
+        class="flex items-center justify-between py-4"
+        v-if="meta && meta.last_page > 1"
+      >
+        <p class="text-sm text-gray-500">
           Page {{ meta.current_page }} of {{ meta.last_page }}
         </p>
         <BasePagination
