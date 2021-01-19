@@ -55,14 +55,6 @@ import FlashMessage from "@/components/FlashMessage";
 import AvatarIcon from "@/components/icons/AvatarIcon";
 import BasePagination from "@/components/BasePagination";
 
-function getUsers(to, next) {
-  const currentPage = parseInt(to.query.page) || 1;
-  store.dispatch("user/getUsers", currentPage).then(() => {
-    to.params.page = currentPage;
-    next();
-  });
-}
-
 export default {
   name: "UsersView",
   components: { FlashMessage, BasePagination, MailIcon, AvatarIcon },
@@ -70,10 +62,11 @@ export default {
     ...mapGetters("user", ["loading", "error", "users", "meta", "links"]),
   },
   beforeRouteEnter(to, from, next) {
-    getUsers(to, next);
-  },
-  beforeRouteUpdate(to, from, next) {
-    getUsers(to, next);
+    const currentPage = parseInt(to.query.page) || 1;
+    store.dispatch("user/getUsers", currentPage).then(() => {
+      to.params.page = currentPage;
+      next();
+    });
   },
 };
 </script>
