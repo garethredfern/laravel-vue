@@ -19,7 +19,7 @@ export default {
 </script>
 
 <style>
-@import url("https://fonts.googleapis.com/css?family=Montserrat:400,700|Open+Sans:400,700|Material+Icons");
+@import url("https://fonts.googleapis.com/css?family=Open+Sans:400,700");
 
 .fade-enter,
 .fade-leave-active {
