@@ -36,20 +36,13 @@
       <FlashMessage :error="error" v-if="error" key="error" />
     </transition>
     <transition name="fade">
-      <div
-        class="flex items-center justify-between py-4"
+      <BasePagination
+        path="users"
+        :meta="meta"
+        :links="links"
+        action="user/paginateUsers"
         v-if="meta && meta.last_page > 1"
-      >
-        <p class="text-sm text-gray-500">
-          Page {{ meta.current_page }} of {{ meta.last_page }}
-        </p>
-        <BasePagination
-          path="users"
-          :meta="meta"
-          :links="links"
-          action="user/paginateUsers"
-        />
-      </div>
+      />
     </transition>
   </div>
 </template>
