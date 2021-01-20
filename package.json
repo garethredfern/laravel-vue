@@ -9,7 +9,7 @@
   },
   "dependencies": {
     "axios": "^0.21.1",
-    "core-js": "^3.8.1",
+    "core-js": "^3.8.3",
     "vue": "^2.6.11",
     "vue-router": "^3.2.0",
     "vuex": "^3.6.0"
@@ -25,9 +25,9 @@
     "@vue/eslint-config-prettier": "^6.0.0",
     "autoprefixer": "^9.8.6",
     "babel-eslint": "^10.1.0",
-    "eslint": "^7.16.0",
-    "eslint-plugin-prettier": "^3.3.0",
-    "eslint-plugin-vue": "^7.3.0",
+    "eslint": "^7.18.0",
+    "eslint-plugin-prettier": "^3.3.1",
+    "eslint-plugin-vue": "^7.4.1",
     "postcss": "^7.0.35",
     "prettier": "^2.2.1",
     "tailwindcss": "npm:@tailwindcss/postcss7-compat@^2.0.2",
