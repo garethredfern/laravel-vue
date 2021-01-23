@@ -58,7 +58,7 @@ export default {
     },
     path: {
       type: String,
-      required: true,
+      default: null,
     },
     meta: {
       type: Object,
@@ -72,34 +72,42 @@ export default {
   methods: {
     firstPage() {
       this.$store.dispatch(this.action, this.links.first).then(() => {
-        this.$router.push({
-          path: this.path,
-          query: { page: 1 },
-        });
+        if (this.path) {
+          this.$router.push({
+            path: this.path,
+            query: { page: 1 },
+          });
+        }
       });
     },
     prevPage() {
       this.$store.dispatch(this.action, this.links.prev).then(() => {
-        this.$router.push({
-          path: this.path,
-          query: { page: this.meta.current_page - 1 },
-        });
+        if (this.path) {
+          this.$router.push({
+            path: this.path,
+            query: { page: this.meta.current_page - 1 },
+          });
+        }
       });
     },
     nextPage() {
       this.$store.dispatch(this.action, this.links.next).then(() => {
-        this.$router.push({
-          path: this.path,
-          query: { page: this.meta.current_page + 1 },
-        });
+        if (this.path) {
+          this.$router.push({
+            path: this.path,
+            query: { page: this.meta.current_page + 1 },
+          });
+        }
       });
     },
     lastPage() {
       this.$store.dispatch(this.action, this.links.last).then(() => {
-        this.$router.push({
-          path: this.path,
-          query: { page: this.meta.last_page },
-        });
+        if (this.path) {
+          this.$router.push({
+            path: this.path,
+            query: { page: this.meta.last_page },
+          });
+        }
       });
     },
   },

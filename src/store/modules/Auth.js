@@ -17,9 +17,6 @@ export const mutations = {
   SET_LOADING(state, loading) {
     state.loading = loading;
   },
-  SET_MESSAGE(state, message) {
-    state.message = message;
-  },
   SET_ERROR(state, error) {
     state.error = error;
   },
