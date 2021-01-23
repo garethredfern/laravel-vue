@@ -33,7 +33,6 @@
     </transition>
     <transition name="fade">
       <BasePagination
-        path="messages"
         :meta="meta"
         :links="links"
         action="message/paginateMessages"
