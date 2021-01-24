@@ -4,9 +4,23 @@
       <p v-if="message" class="mt-2 text-sm text-green-500" key="message">
         {{ message }}
       </p>
-      <p v-if="error" class="mt-2 text-sm text-red-500" key="error">
+      <p
+        v-if="error && typeof error === 'string'"
+        class="mt-2 text-sm text-red-500"
+        key="error"
+      >
         {{ error }}
       </p>
+      <ul v-if="errorKeys" class="mt-2 text-sm text-red-500" key="error-list">
+        <li v-for="key in errorKeys" :key="key">
+          <b class="font-bold capitalize">{{ key | titleCase }}</b>
+          <ul class="ml-2">
+            <li v-for="item in getErrors(key)" :key="item">
+              {{ item }}
+            </li>
+          </ul>
+        </li>
+      </ul>
     </transition-group>
   </div>
 </template>
@@ -20,8 +34,24 @@ export default {
       default: null,
     },
     error: {
-      type: [Error, String],
+      type: [Error, Object, String],
       default: null,
+    },
+  },
+  computed: {
+    errorKeys() {
+      if (!this.error) return null;
+      return Object.keys(this.error) ? Object.keys(this.error) : null;
+    },
+  },
+  methods: {
+    getErrors(key) {
+      return this.error[key];
+    },
+  },
+  filters: {
+    titleCase(value) {
+      return value.replace("_", " ");
     },
   },
 };
