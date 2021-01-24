@@ -1,18 +1,18 @@
 <template>
-  <div class="p-5 xl:px-0">
+  <div>
     <transition name="fade" mode="out-in">
       <FlashMessage
         message="loading..."
         v-if="loading && !messages.length"
         key="loading"
       />
-      <ul v-else class="mt-5">
+      <ul v-else>
         <li
           v-for="message in messages"
           :key="message.id"
-          class="flex items-center justify-between py-2 space-x-16 border-b"
+          class="flex py-2 space-x-2 border-b"
         >
-          <div class="inline-flex items-center space-x-2">
+          <div>
             <img
               v-if="message.user.avatar"
               :src="message.user.avatar"
@@ -20,10 +20,13 @@
               alt=""
             />
             <AvatarIcon class="w-10 h-10 text-gray-400 rounded-full" v-else />
-            {{ message.user.name }}
           </div>
-          <div class="text-gray-600">
-            {{ message.body }}
+          <div>
+            <div class="flex space-x-2">
+              <span class="font-bold">{{ message.user.name }}</span>
+              <span class="text-gray-400">{{ message.createdAt }}</span>
+            </div>
+            <div class="text-gray-600">{{ message.body }}</div>
           </div>
         </li>
       </ul>

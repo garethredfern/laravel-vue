@@ -1,9 +1,11 @@
 <template>
   <div class="p-5 xl:px-0">
-    <article class="max-w-xl p-5 m-auto bg-white rounded shadow">
-      <MessageForm />
-      <Messages />
-    </article>
+    <div class="max-w-xl m-auto">
+      <MessageForm class="mb-4" />
+      <article class="p-5 bg-white rounded shadow">
+        <Messages />
+      </article>
+    </div>
     <footer class="py-5 text-center">
       <p class="text-gray-400">
         Full documentation for how this application is built can be found at
