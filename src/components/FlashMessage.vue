@@ -16,7 +16,7 @@ export default {
   name: "FlashMessage",
   props: {
     message: {
-      type: String,
+      type: [Object, String],
       default: null,
     },
     error: {
