@@ -15,7 +15,7 @@
         <li v-for="key in errorKeys" :key="key">
           <b class="font-bold capitalize">{{ key | titleCase }}</b>
           <ul class="ml-2">
-            <li v-for="item in getErrors(key)" :key="item">
+            <li v-for="(item, index) in getErrors(key)" :key="`${index}-error`">
               {{ item }}
             </li>
           </ul>
