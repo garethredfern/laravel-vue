@@ -48,6 +48,11 @@ export const actions = {
         commit("SET_ERROR", getError(error));
       });
   },
+  postMessage({ commit }, payload) {
+    return MessageService.postMessage(payload).then((response) => {
+      setPaginatedMessages(commit, response);
+    });
+  },
   paginateMessages({ commit }, link) {
     commit("SET_LOADING", true);
     MessageService.paginateMessages(link)
