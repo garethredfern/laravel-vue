@@ -8,7 +8,7 @@
       class="mb-4"
     />
     <div class="flex justify-end mb-2">
-      <BaseBtn type="submit" text="Send" />
+      <BaseBtn type="submit" text="Message" />
     </div>
     <FlashMessage :error="error" />
   </form>
@@ -41,6 +41,7 @@ export default {
         };
         this.error = null;
         await this.$store.dispatch("message/postMessage", payload);
+        this.body = null;
       } catch (error) {
         this.error = getError(error);
       }
