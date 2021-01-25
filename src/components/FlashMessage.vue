@@ -5,13 +5,17 @@
         {{ message }}
       </p>
       <p
-        v-if="error && typeof error === 'string'"
+        v-if="error && getType(error) === 'string'"
         class="mt-2 text-sm text-red-500"
         key="error"
       >
         {{ error }}
       </p>
-      <ul v-if="errorKeys" class="mt-2 text-sm text-red-500" key="error-list">
+      <ul
+        v-if="getType(error) === 'object'"
+        class="mt-2 text-sm text-red-500"
+        key="error-list"
+      >
         <li v-for="key in errorKeys" :key="key">
           <b class="font-bold capitalize">{{ key | titleCase }}</b>
           <ul class="ml-2">
@@ -41,12 +45,15 @@ export default {
   computed: {
     errorKeys() {
       if (!this.error) return null;
-      return Object.keys(this.error) ? Object.keys(this.error) : null;
+      return Object.keys(this.error);
     },
   },
   methods: {
     getErrors(key) {
       return this.error[key];
+    },
+    getType(obj) {
+      return Object.prototype.toString.call(obj).slice(8, -1).toLowerCase();
     },
   },
   filters: {
