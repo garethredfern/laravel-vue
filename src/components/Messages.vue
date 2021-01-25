@@ -10,7 +10,7 @@
         <li
           v-for="message in messages"
           :key="message.id"
-          class="flex py-2 space-x-2 border-b"
+          class="flex py-2 space-x-2 border-b last:border-b-0"
         >
           <div>
             <img
