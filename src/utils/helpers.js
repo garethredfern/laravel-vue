@@ -1,5 +1,7 @@
 export const getError = (error) => {
-  console.debug({ error }); // remove in production
+  if (process.env.NODE_ENV === "development") {
+    console.debug({ error });
+  }
   return error.response && error.response.data.errors
     ? error.response.data.errors
     : error;
