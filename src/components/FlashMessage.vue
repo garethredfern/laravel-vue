@@ -44,7 +44,9 @@ export default {
   },
   computed: {
     errorKeys() {
-      if (!this.error) return null;
+      if (!this.error || this.getType(this.error) === "string") {
+        return null;
+      }
       return Object.keys(this.error);
     },
   },
