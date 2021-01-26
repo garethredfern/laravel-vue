@@ -34,11 +34,11 @@ export default {
   name: "FlashMessage",
   props: {
     message: {
-      type: [Object, String],
+      type: String,
       default: null,
     },
     error: {
-      type: [Error, Object, String],
+      type: [Object, String],
       default: null,
     },
   },

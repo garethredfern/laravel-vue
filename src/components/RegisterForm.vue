@@ -31,7 +31,7 @@
       class="mb-4"
     />
     <BaseBtn type="submit" text="Register" />
-    <FlashMessage :message="message" :error="error" />
+    <FlashMessage :error="error" />
   </form>
 </template>
 
@@ -56,13 +56,11 @@ export default {
       password: null,
       passwordConfirm: null,
       error: null,
-      message: null,
     };
   },
   methods: {
     registerUser() {
       this.error = null;
-      this.message = null;
       const payload = {
         name: this.name,
         email: this.email,
