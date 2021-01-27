@@ -58,6 +58,12 @@ const routes = [
         /* webpackChunkName: "forgot-password" */ "../views/ForgotPassword"
       ),
   },
+  {
+    path: "/:catchAll(.*)",
+    name: "NotFound",
+    component: () =>
+      import(/* webpackChunkName: "NotFound" */ "../views/NotFound"),
+  },
 ];
 
 const router = new VueRouter({
