@@ -53,7 +53,7 @@ export const getters = {
     return state.user;
   },
   isAdmin: (state) => {
-    return state.user.isAdmin;
+    return state.user ? state.user.isAdmin : false;
   },
   error: (state) => {
     return state.error;
