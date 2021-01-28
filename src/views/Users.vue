@@ -24,10 +24,14 @@
           </div>
           <a
             :href="`mailto:${user.email}`"
+            :title="user.emailVerified ? 'Verified' : 'Not Verified'"
             class="inline-flex items-center space-x-2"
           >
             <span class="hidden sm:inline">{{ user.email }}</span>
-            <MailIcon class="w-8 h-8 text-gray-300" />
+            <MailIcon
+              class="w-8 h-8"
+              :class="user.emailVerified ? 'text-green-400' : 'text-gray-300'"
+            />
           </a>
         </li>
       </ul>
