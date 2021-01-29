@@ -2,6 +2,8 @@ import Vue from "vue";
 import store from "@/store/index";
 import VueRouter from "vue-router";
 import auth from "@/middleware/auth";
+import guest from "@/middleware/guest";
+import middlewarePipeline from "@/router/middlewarePipeline";
 
 Vue.use(VueRouter);
 
@@ -9,6 +11,7 @@ const routes = [
   {
     path: "/",
     name: "home",
+    meta: { middleware: [guest] },
     component: () => import(/* webpackChunkName: "home" */ "../views/Home"),
   },
   {
@@ -37,23 +40,27 @@ const routes = [
   {
     path: "/login",
     name: "login",
+    meta: { middleware: [guest] },
     component: () => import(/* webpackChunkName: "login" */ "../views/Login"),
   },
   {
     path: "/register",
     name: "register",
+    meta: { middleware: [guest] },
     component: () =>
       import(/* webpackChunkName: "register" */ "../views/Register"),
   },
   {
     path: "/reset-password",
     name: "ResetPassword",
+    meta: { middleware: [guest] },
     component: () =>
       import(/* webpackChunkName: "reset-password" */ "../views/ResetPassword"),
   },
   {
     path: "/forgot-password",
     name: "ForgotPassword",
+    meta: { middleware: [guest] },
     component: () =>
       import(
         /* webpackChunkName: "forgot-password" */ "../views/ForgotPassword"
@@ -81,7 +88,7 @@ router.beforeEach((to, from, next) => {
 
   return middleware[0]({
     ...context,
-    next,
+    next: middlewarePipeline(context, middleware, 1),
   });
 });
 
