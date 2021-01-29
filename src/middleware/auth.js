@@ -7,7 +7,7 @@ export default function auth({ to, next, store }) {
       if (!store.getters["auth/authUser"]) next(loginQuery);
       else next();
     });
+  } else {
+    next();
   }
-
-  next();
 }
