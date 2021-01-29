@@ -1,6 +1,7 @@
 import Vue from "vue";
 import store from "@/store/index";
 import VueRouter from "vue-router";
+import auth from "@/middleware/auth";
 
 Vue.use(VueRouter);
 
@@ -13,20 +14,20 @@ const routes = [
   {
     path: "/dashboard",
     name: "dashboard",
-    meta: { requiresAuth: true },
+    meta: { middleware: [auth] },
     component: () =>
       import(/* webpackChunkName: "dashboard" */ "../views/Dashboard"),
   },
   {
     path: "/user",
     name: "user",
-    meta: { requiresAuth: true },
+    meta: { middleware: [auth] },
     component: () => import(/* webpackChunkName: "user" */ "../views/User"),
   },
   {
     path: "/users",
     name: "users",
-    meta: { requiresAuth: true },
+    meta: { middleware: [auth] },
     component: () => import(/* webpackChunkName: "users" */ "../views/Users"),
     beforeEnter: (to, from, next) => {
       if (store.getters["auth/isAdmin"]) next();
@@ -72,18 +73,16 @@ const router = new VueRouter({
 });
 
 router.beforeEach((to, from, next) => {
-  const authUser = store.getters["auth/authUser"];
-  const reqAuth = to.matched.some((record) => record.meta.requiresAuth);
-  const loginQuery = { path: "/login", query: { redirect: to.fullPath } };
-
-  if (reqAuth && !authUser) {
-    store.dispatch("auth/getAuthUser").then(() => {
-      if (!store.getters["auth/authUser"]) next(loginQuery);
-      else next();
-    });
-  } else {
-    next(); // make sure to always call next()!
+  if (!to.meta.middleware) {
+    return next();
   }
+  const middleware = to.meta.middleware;
+  const context = { to, from, next, store };
+
+  return middleware[0]({
+    ...context,
+    next,
+  });
 });
 
 export default router;
