@@ -46,6 +46,9 @@ export const actions = {
         commit("SET_ERROR", getError(error));
       });
   },
+  clearAuthUser({ commit }) {
+    commit("SET_USER", null);
+  },
 };
 
 export const getters = {
