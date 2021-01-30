@@ -28,6 +28,8 @@ export const actions = {
       .then(() => {
         commit("SET_USER", null);
         window.localStorage.setItem("guest", true);
+      })
+      .then(() => {
         router.push({ path: "/login" });
       })
       .catch((error) => {
@@ -49,10 +51,6 @@ export const actions = {
   },
   setGuest(context, { value }) {
     window.localStorage.setItem("guest", value);
-  },
-  clearAuthUser({ commit }) {
-    commit("SET_USER", null);
-    window.localStorage.setItem("guest", true);
   },
 };
 
