@@ -1,12 +1,10 @@
 /*
  * This is the initial API interface
  * we set the base URL for the API
- ? Both request & response are logged to the console.
- ! Remove the console logs for production.
-*/
+ */
 
 import axios from "axios";
-import store from "@/store/index";
+import store from "@/store";
 
 export const apiClient = axios.create({
   baseURL: process.env.VUE_APP_API_URL + "/api",
@@ -25,7 +23,9 @@ apiClient.interceptors.response.use(
       error.response &&
       (error.response.status === 401 || error.response.status === 419)
     ) {
-      store.dispatch("auth/clearAuthUser");
+      if (!store.getters["auth/guest"]) {
+        store.dispatch("auth/logout");
+      }
     }
     return Promise.reject(error);
   }
