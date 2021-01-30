@@ -16,6 +16,6 @@
 
 <script>
 export default {
-  name: "404 NotFound",
+  name: "NotFound",
 };
 </script>

@@ -27,6 +27,9 @@ export const actions = {
     return AuthService.logout()
       .then(() => {
         commit("SET_USER", null);
+        window.localStorage.setItem("guest", true);
+      })
+      .then(() => {
         router.push({ path: "/login" });
       })
       .catch((error) => {
@@ -46,6 +49,9 @@ export const actions = {
         commit("SET_ERROR", getError(error));
       });
   },
+  setGuest(context, { value }) {
+    window.localStorage.setItem("guest", value);
+  },
 };
 
 export const getters = {
@@ -63,5 +69,8 @@ export const getters = {
   },
   loggedIn: (state) => {
     return !!state.user;
+  },
+  guest: () => {
+    return JSON.parse(window.localStorage.getItem("guest"));
   },
 };

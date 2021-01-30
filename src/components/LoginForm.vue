@@ -54,7 +54,10 @@ export default {
         password: this.password,
       };
       AuthService.login(payload)
-        .then(() => this.$router.push("/dashboard"))
+        .then(() => {
+          this.$store.dispatch("auth/setGuest", { value: false });
+          this.$router.push("/dashboard");
+        })
         .catch((error) => (this.error = getError(error)));
     },
   },
