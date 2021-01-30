@@ -52,6 +52,7 @@ export const actions = {
   },
   clearAuthUser({ commit }) {
     commit("SET_USER", null);
+    window.localStorage.setItem("guest", true);
   },
 };
 
@@ -72,6 +73,6 @@ export const getters = {
     return !!state.user;
   },
   guest: () => {
-    return window.localStorage.getItem("guest");
+    return JSON.parse(window.localStorage.getItem("guest"));
   },
 };
