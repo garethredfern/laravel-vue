@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div v-if="authUser">
     <transition name="fade">
       <img
         v-if="authUser.avatar"
