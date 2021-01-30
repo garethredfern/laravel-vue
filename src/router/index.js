@@ -2,6 +2,7 @@ import Vue from "vue";
 import store from "@/store/index";
 import VueRouter from "vue-router";
 import auth from "@/middleware/auth";
+import admin from "@/middleware/admin";
 import guest from "@/middleware/guest";
 import middlewarePipeline from "@/router/middlewarePipeline";
 
@@ -30,12 +31,8 @@ const routes = [
   {
     path: "/users",
     name: "users",
-    meta: { middleware: [auth] },
+    meta: { middleware: [auth, admin] },
     component: () => import(/* webpackChunkName: "users" */ "../views/Users"),
-    beforeEnter: (to, from, next) => {
-      if (store.getters["auth/isAdmin"]) next();
-      else next(false);
-    },
   },
   {
     path: "/login",
@@ -52,14 +49,14 @@ const routes = [
   },
   {
     path: "/reset-password",
-    name: "ResetPassword",
+    name: "resetPassword",
     meta: { middleware: [guest] },
     component: () =>
       import(/* webpackChunkName: "reset-password" */ "../views/ResetPassword"),
   },
   {
     path: "/forgot-password",
-    name: "ForgotPassword",
+    name: "forgotPassword",
     meta: { middleware: [guest] },
     component: () =>
       import(
@@ -68,9 +65,9 @@ const routes = [
   },
   {
     path: "/:catchAll(.*)",
-    name: "NotFound",
+    name: "notFound",
     component: () =>
-      import(/* webpackChunkName: "NotFound" */ "../views/NotFound"),
+      import(/* webpackChunkName: "not-found" */ "../views/NotFound"),
   },
 ];
 
