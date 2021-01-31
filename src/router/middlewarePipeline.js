@@ -3,10 +3,7 @@ export default function middlewarePipeline(context, middleware, index) {
   if (!nextMiddleware) {
     return context.next;
   }
-  return (params) => {
-    if (params) {
-      return context.next(params);
-    }
+  return () => {
     nextMiddleware({
       ...context,
       next: middlewarePipeline(context, middleware, index + 1),
