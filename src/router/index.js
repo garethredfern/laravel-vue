@@ -77,17 +77,35 @@ const router = new VueRouter({
 });
 
 router.beforeEach((to, from, next) => {
-  const middleware = to.meta.middleware;
-  const context = { to, from, next, store };
+	const context = { to, from, next, store };
 
-  if (!middleware) {
-    return next();
-  }
-
-  middleware[0]({
-    ...context,
-    next: middlewarePipeline(context, middleware, 1),
-  });
+	// check if there is any middleware in the route tree
+	if (to.matched.some((route) => route.meta.middleware)) {
+		// define called middleware stack
+		var calledMiddleware = [];
+		// loop through all matched routes
+		for (var i = 0; i < to.matched.length; i++) {
+			// get meta of the current iteration route
+			var meta = to.matched[i].meta;
+			// check for any meta content and the middleware property
+			if (Object.keys(meta).length && meta.hasOwnProperty('middleware')) {
+				// get the first available middleware
+				var middleware = meta.middleware[0];
+				// check if the middleware is a function and is not yet called
+				if (typeof middleware === 'function' && !calledMiddleware.includes(middleware.name)) {
+					// call the middleware function and include context and pipeline
+					middleware({
+						...context,
+						next: middlewarePipeline(context, middleware, 1),
+					});
+					// add the called middleware function to the stack
+					calledMiddleware.push(middleware.name);
+				}
+			}
+		}
+	} else {
+		return next();
+	}
 });
 
 export default router;
