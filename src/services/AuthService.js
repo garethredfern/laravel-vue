@@ -18,7 +18,7 @@ authClient.interceptors.response.use(
       error.response &&
       (error.response.status === 401 || error.response.status === 419)
     ) {
-      if (!store.getters["auth/guest"]) {
+      if (!store.getters["auth/guest"] && store.getters["auth/authUser"]) {
         store.dispatch("auth/logout");
       }
     }
