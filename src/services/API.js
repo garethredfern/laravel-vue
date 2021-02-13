@@ -21,9 +21,10 @@ apiClient.interceptors.response.use(
   function (error) {
     if (
       error.response &&
-	  ([401, 419].includes(error.response.status)) &&
-	  !store.getters["auth/guest"]
+	    ([401, 419].includes(error.response.status)) &&
+	    !store.getters["auth/guest"]
     ) {
+      if (!store.getters["auth/guest"] && store.getters["auth/authUser"]) {
         store.dispatch("auth/logout");
     }
     return Promise.reject(error);
