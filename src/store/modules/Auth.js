@@ -71,6 +71,7 @@ export const getters = {
     return !!state.user;
   },
   guest: () => {
-    return JSON.parse(window.localStorage.getItem("guest"));
+    const storage = window.localStorage.getItem("guest");
+    return storage ? JSON.parse(storage) : false;
   },
 };
