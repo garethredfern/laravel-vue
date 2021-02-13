@@ -16,11 +16,11 @@ authClient.interceptors.response.use(
   function (error) {
     if (
       error.response &&
-      (error.response.status === 401 || error.response.status === 419)
+      [401, 419].includes(error.response.status) &&
+      store.getters["auth/authUser"] &&
+      !store.getters["auth/guest"]
     ) {
-      if (!store.getters["auth/guest"] && store.getters["auth/authUser"]) {
-        store.dispatch("auth/logout");
-      }
+      store.dispatch("auth/logout");
     }
     return Promise.reject(error);
   }
