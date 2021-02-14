@@ -53,6 +53,7 @@ export default {
         email: this.email,
         password: this.password,
       };
+      this.error = null;
       try {
         await AuthService.login(payload);
         const authUser = await this.$store.dispatch("auth/getAuthUser");
