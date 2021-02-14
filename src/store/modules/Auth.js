@@ -23,14 +23,13 @@ export const mutations = {
 };
 
 export const actions = {
-  logout({ commit }) {
+  logout({ commit, dispatch }) {
     return AuthService.logout()
       .then(() => {
         commit("SET_USER", null);
-        window.localStorage.setItem("guest", true);
-      })
-      .then(() => {
-        router.push({ path: "/login" });
+        dispatch("setGuest", { value: "isGuest" });
+        if (router.currentRoute.name !== "login")
+          router.push({ path: "/login" });
       })
       .catch((error) => {
         commit("SET_ERROR", getError(error));
@@ -71,7 +70,9 @@ export const getters = {
     return !!state.user;
   },
   guest: () => {
-    const storage = window.localStorage.getItem("guest");
-    return storage ? JSON.parse(storage) : false;
+    const storageItem = window.localStorage.getItem("guest");
+    if (!storageItem) return false;
+    if (storageItem === "isGuest") return true;
+    if (storageItem === "isNotGuest") return false;
   },
 };
