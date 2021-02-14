@@ -48,17 +48,28 @@ export default {
     };
   },
   methods: {
-    login() {
+    async login() {
       const payload = {
         email: this.email,
         password: this.password,
       };
-      AuthService.login(payload)
-        .then(() => {
-          this.$store.dispatch("auth/setGuest", { value: false });
+      this.error = null;
+      try {
+        await AuthService.login(payload);
+        const authUser = await this.$store.dispatch("auth/getAuthUser");
+        if (authUser) {
+          this.$store.dispatch("auth/setGuest", { value: "isNotGuest" });
           this.$router.push("/dashboard");
-        })
-        .catch((error) => (this.error = getError(error)));
+        } else {
+          const error = Error(
+            "Unable to fetch user after login, check your API settings."
+          );
+          error.name = "Fetch User";
+          throw error;
+        }
+      } catch (error) {
+        this.error = getError(error);
+      }
     },
   },
 };

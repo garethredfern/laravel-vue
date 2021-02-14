@@ -1,6 +1,10 @@
 export const getError = (error) => {
   const errorMessage = "API Error, please try again.";
 
+  if (error.name === "Fetch User") {
+    return error.message;
+  }
+
   if (!error.response) {
     console.error(`API ${error.config.url} not found`);
     return errorMessage;
