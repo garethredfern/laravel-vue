@@ -31,31 +31,31 @@ export default {
     await authClient.get("/sanctum/csrf-cookie");
     await authClient.post("/login", payload);
   },
-  async logout() {
-    await authClient.post("/logout");
+  logout() {
+    return authClient.post("/logout");
   },
   async forgotPassword(payload) {
     await authClient.get("/sanctum/csrf-cookie");
     await authClient.post("/forgot-password", payload);
   },
-  async getAuthUser() {
-    return await authClient.get("/api/users/auth");
+  getAuthUser() {
+    return authClient.get("/api/users/auth");
   },
   async resetPassword(payload) {
     await authClient.get("/sanctum/csrf-cookie");
     await authClient.post("/reset-password", payload);
   },
-  async updatePassword(payload) {
-    await authClient.put("/user/password", payload);
+  updatePassword(payload) {
+    return authClient.put("/user/password", payload);
   },
   async registerUser(payload) {
     await authClient.get("/sanctum/csrf-cookie");
     await authClient.post("/register", payload);
   },
-  async sendVerification(payload) {
-    await authClient.post("/email/verification-notification", payload);
+  sendVerification(payload) {
+    return authClient.post("/email/verification-notification", payload);
   },
-  async updateUser(payload) {
-    await authClient.put("/user/profile-information", payload);
+  updateUser(payload) {
+    return authClient.put("/user/profile-information", payload);
   },
 };
