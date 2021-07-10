@@ -6,17 +6,10 @@
       </p>
       <p
         v-if="error && getType(error) === 'string'"
-        key="error1"
+        key="error"
         class="mt-2 text-sm text-red-500"
       >
         {{ error }}
-      </p>
-      <p
-        v-if="error && getType(error) === 'error'"
-        key="error2"
-        class="mt-2 text-sm text-red-500"
-      >
-        {{ errorObj }}
       </p>
       <ul
         v-if="getType(error) === 'object'"
@@ -50,12 +43,6 @@ export default {
     },
   },
   computed: {
-    errorObj() {
-      if (this.error || this.getType(this.error) === "Error") {
-        return this.error.toString();
-      }
-      return null;
-    },
     errorKeys() {
       if (!this.error || this.getType(this.error) === "string") {
         return null;
