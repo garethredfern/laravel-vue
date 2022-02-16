@@ -34,7 +34,7 @@ const password = ref(null);
       <BaseBtn type="submit" text="Login" />
       <router-link
         to="/forgot-password"
-        class="base-link text-sm text-gray-400"
+        class="hover:underline text-sm text-gray-400"
       >
         Forgot your password?
       </router-link>
