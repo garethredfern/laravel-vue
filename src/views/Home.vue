@@ -18,7 +18,7 @@
         Docs on how this application is built can be found at:
         <a
           href="https://laravelvuespa.com/"
-          class="underline hover:no-underline"
+          class="underline hover:no-underline font-bold text-gray-900"
           >laravelvuespa.com</a
         >
       </p>

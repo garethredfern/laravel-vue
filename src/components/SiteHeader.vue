@@ -7,7 +7,7 @@ const showLogin = computed(() => !authStore.loggedIn && !authStore.authLoading);
 </script>
 
 <template>
-  <header class="flex space-x-4 bg-slate-100 p-5 border-b-2">
+  <header class="flex space-x-4 bg-slate-100 p-5 border-b-2 uppercase">
     <nav class="space-x-5">
       <RouterLink to="/">Home</RouterLink>
     </nav>
