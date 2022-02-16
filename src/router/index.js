@@ -15,6 +15,26 @@ const router = createRouter({
       component: () =>
         import(/* webpackChunkName: "dashboard" */ "@/views/Dashboard.vue"),
     },
+    {
+      path: "/login",
+      name: "login",
+      component: () =>
+        import(/* webpackChunkName: "login" */ "@/views/Login.vue"),
+    },
+    {
+      path: "/register",
+      name: "register",
+      component: () =>
+        import(/* webpackChunkName: "register" */ "@/views/Register.vue"),
+    },
+    {
+      path: "/forgot-password",
+      name: "forgotPassword",
+      component: () =>
+        import(
+          /* webpackChunkName: "forgotPassword" */ "@/views/ForgotPassword.vue"
+        ),
+    },
   ],
 });
 
