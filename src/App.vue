@@ -7,9 +7,9 @@ import SiteFooter from "@/components/SiteFooter.vue";
 <template>
   <div class="flex h-screen flex-col justify-between">
     <SiteHeader />
-    <div class="mb-auto">
+    <main class="mb-auto">
       <RouterView />
-    </div>
+    </main>
     <SiteFooter />
   </div>
 </template>
