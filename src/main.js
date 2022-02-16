@@ -1,13 +1,22 @@
-import Vue from "vue";
-import App from "./App.vue";
-import router from "./router";
-import store from "./store";
-import "@/assets/css/tailwind.css";
+import { createApp, markRaw } from "vue";
+import { createPinia } from "pinia";
+import "@/assets/tailwind.css";
 
-Vue.config.productionTip = false;
+import App from "@/App.vue";
+import router from "@/router";
 
-new Vue({
-  router,
-  store,
-  render: (h) => h(App),
-}).$mount("#app");
+const app = createApp(App);
+
+const pinia = createPinia();
+
+// add the router to Pina as a plugin
+// gives you access to the router
+// use this.router in any store
+pinia.use(({ store }) => {
+  store.router = markRaw(router);
+});
+
+app.use(pinia);
+app.use(router);
+
+app.mount("#app");

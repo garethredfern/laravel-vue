@@ -1,33 +1,37 @@
-# Laravel Vue SPA Using Sanctum & Fortify Authentication
+# Laravel Vue SPA Using Breeze API
 
 ## Documentation
 
 The full documentation for this demo app can be found at [Build a Laravel Vue Spa](https://laravelvuespa.com/).
 
-## Project setup
-```
+## Recommended IDE Setup
+
+[VSCode](https://code.visualstudio.com/) + [Volar](https://marketplace.visualstudio.com/items?itemName=johnsoncodehk.volar) (and disable Vetur) + [TypeScript Vue Plugin (Volar)](https://marketplace.visualstudio.com/items?itemName=johnsoncodehk.vscode-typescript-vue-plugin).
+
+## Customize configuration
+
+See [Vite Configuration Reference](https://vitejs.dev/config/).
+
+## Project Setup
+
+```sh
 npm install
 ```
 
-**IMPORTANT** make sure you have a .env.local file with your API URL added
-```
-VUE_APP_API_URL=http://localhost
+### Compile and Hot-Reload for Development
+
+```sh
+npm run dev
 ```
 
-### Compiles and hot-reloads for development
-```
-npm run serve
-```
+### Compile and Minify for Production
 
-### Compiles and minifies for production
-```
+```sh
 npm run build
 ```
 
-### Lints and fixes files
-```
+### Lint with [ESLint](https://eslint.org/)
+
+```sh
 npm run lint
 ```
-
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).

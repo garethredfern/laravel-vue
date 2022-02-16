@@ -1,13 +1,3 @@
-<template>
-  <button
-    :type="type"
-    v-on="$listeners"
-    class="px-2.5 py-1.5 border border-transparent text-xs rounded shadow-sm text-white bg-blue-400 hover:bg-blue-500 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 text-center transition"
-  >
-    {{ text }}
-  </button>
-</template>
-
 <script>
 export default {
   name: "BaseBtn",
@@ -23,3 +13,12 @@ export default {
   },
 };
 </script>
+
+<template>
+  <button
+    :type="type"
+    class="rounded border border-transparent bg-blue-400 px-2.5 py-1.5 text-center text-xs text-white shadow-sm transition hover:bg-blue-500 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2"
+  >
+    {{ text }}
+  </button>
+</template>

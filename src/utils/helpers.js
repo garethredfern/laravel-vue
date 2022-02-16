@@ -1,22 +1,22 @@
 export const getError = (error) => {
-  const errorMessage = "API Error, please try again.";
-
   if (error.name === "Fetch User") {
     return error.message;
   }
 
   if (!error.response) {
-    console.error(`API ${error.config.url} not found`);
-    return errorMessage;
+    console.info(`API: ${error.config?.url} not found`);
+    console.info(error);
+    return "API Request Error, please try again.";
   }
-  if (process.env.NODE_ENV === "development") {
-    console.error(error.response.data);
-    console.error(error.response.status);
-    console.error(error.response.headers);
+  if (import.meta.env.DEV) {
+    console.group("dev error info");
+    console.info("[DATA]", error.response.data);
+    console.info(`[STATUS] ${error.response.status}`);
+    console.info("[HEADERS]", error.response.headers);
+    console.groupEnd();
   }
   if (error.response.data && error.response.data.errors) {
     return error.response.data.errors;
   }
-
-  return errorMessage;
+  return null;
 };

@@ -1,34 +1,3 @@
-<template>
-  <div>
-    <transition-group name="fade">
-      <p v-if="message" class="mt-2 text-sm text-green-500" key="message">
-        {{ message }}
-      </p>
-      <p
-        v-if="error && getType(error) === 'string'"
-        key="error"
-        class="mt-2 text-sm text-red-500"
-      >
-        {{ error }}
-      </p>
-      <ul
-        v-if="getType(error) === 'object'"
-        class="mt-2 text-sm text-red-500"
-        key="error-list"
-      >
-        <li v-for="key in errorKeys" :key="key">
-          <b class="font-bold capitalize">{{ key | titleCase }}</b>
-          <ul class="ml-2">
-            <li v-for="(item, index) in getErrors(key)" :key="`${index}-error`">
-              {{ item }}
-            </li>
-          </ul>
-        </li>
-      </ul>
-    </transition-group>
-  </div>
-</template>
-
 <script>
 export default {
   name: "FlashMessage",
@@ -57,11 +26,40 @@ export default {
     getType(obj) {
       return Object.prototype.toString.call(obj).slice(8, -1).toLowerCase();
     },
-  },
-  filters: {
     titleCase(value) {
       return value.replace("_", " ");
     },
   },
 };
 </script>
+
+<template>
+  <div>
+    <transition-group name="fade">
+      <p v-if="message" class="mt-2 text-sm text-green-500" key="message">
+        {{ message }}
+      </p>
+      <p
+        v-if="error && getType(error) === 'string'"
+        key="error"
+        class="mt-2 text-sm text-pink-500"
+      >
+        {{ error }}
+      </p>
+      <ul
+        v-if="getType(error) === 'object'"
+        class="mt-2 text-sm text-pink-500"
+        key="error-list"
+      >
+        <li v-for="key in errorKeys" :key="key">
+          <b class="font-bold capitalize">{{ titleCase(key) }}</b>
+          <ul class="ml-2">
+            <li v-for="(item, index) in getErrors(key)" :key="`${index}-error`">
+              {{ item }}
+            </li>
+          </ul>
+        </li>
+      </ul>
+    </transition-group>
+  </div>
+</template>
