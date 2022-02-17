@@ -1,4 +1,5 @@
 import { createRouter, createWebHistory } from "vue-router";
+import { useAuth } from "@/stores/authStore";
 import Home from "@/views/Home.vue";
 
 const router = createRouter({
@@ -56,6 +57,34 @@ const router = createRouter({
         import(/* webpackChunkName: "NotFound" */ "@/views/NotFound.vue"),
     },
   ],
+});
+
+const guestAuthRoutes = [
+  "login",
+  "register",
+  "forgotPassword",
+  "passwordReset",
+];
+
+router.beforeEach(async (to) => {
+  const authStore = useAuth();
+  await authStore.getAuthUser();
+  // instead of having to check every route record with
+  // to.matched.some(record => record.meta.requiresAuth)
+  if (to.meta.requiresAuth && !authStore.authUser) {
+    // this route requires auth, check if logged in
+    // if not, redirect to login page.
+    return {
+      path: "/login",
+      // save the location we were at to come back later
+      query: { redirect: to.fullPath },
+    };
+  }
+  if (authStore.authUser && guestAuthRoutes.includes(to.name)) {
+    return {
+      path: "/dashboard",
+    };
+  }
 });
 
 export default router;
