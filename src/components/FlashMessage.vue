@@ -34,9 +34,9 @@ export default {
 </script>
 
 <template>
-  <div>
+  <div class="py-2">
     <transition-group name="fade">
-      <p v-if="message" class="mt-2 text-sm text-green-500" key="message">
+      <p v-if="message" class="mt-2 text-sm text-blue-400" key="message">
         {{ message }}
       </p>
       <p
