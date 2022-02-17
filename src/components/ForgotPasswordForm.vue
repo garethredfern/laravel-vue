@@ -12,6 +12,7 @@ const authError = ref(null);
 
 async function forgotPassword() {
   authError.value = null;
+  message.value = null;
   const payload = {
     email: email.value,
   };
@@ -38,6 +39,6 @@ async function forgotPassword() {
     <div class="flex justify-between">
       <BaseBtn type="submit" text="Submit" />
     </div>
-    <FlashMessage :error="authError" :message="message" />
+    <FlashMessage :message="message" :error="authError" />
   </form>
 </template>
