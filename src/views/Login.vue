@@ -9,7 +9,7 @@ import LoginForm from "@/components/LoginForm.vue";
     <p class="mt-2 text-center text-gray-500">
       <RouterLink
         to="/register"
-        class="text-pink-500 transition hover:text-pink-600 hover:underline"
+        class="text-pink-500 transition hover:text-pink-600 hover:underline text-sm"
         >Register for an account</RouterLink
       >
     </p>
