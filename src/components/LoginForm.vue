@@ -20,7 +20,7 @@ const password = ref(null);
       autocomplete="email"
       placeholder="luke@jedi.com"
       required
-      class="mb-4"
+      class="mb-2"
     />
     <BaseInput
       type="password"
