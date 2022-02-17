@@ -8,32 +8,52 @@ const router = createRouter({
       path: "/",
       name: "home",
       component: Home,
+      meta: { requiresAuth: false },
     },
     {
       path: "/dashboard",
       name: "dashboard",
+      meta: { requiresAuth: true },
       component: () =>
-        import(/* webpackChunkName: "dashboard" */ "@/views/Dashboard.vue"),
+        import(/* webpackChunkName: "Dashboard" */ "@/views/Dashboard.vue"),
     },
     {
       path: "/login",
       name: "login",
+      meta: { requiresAuth: false },
       component: () =>
-        import(/* webpackChunkName: "login" */ "@/views/Login.vue"),
+        import(/* webpackChunkName: "Login" */ "@/views/Login.vue"),
     },
     {
       path: "/register",
       name: "register",
+      meta: { requiresAuth: false },
       component: () =>
-        import(/* webpackChunkName: "register" */ "@/views/Register.vue"),
+        import(/* webpackChunkName: "Register" */ "@/views/Register.vue"),
     },
     {
       path: "/forgot-password",
       name: "forgotPassword",
+      meta: { requiresAuth: false },
       component: () =>
         import(
-          /* webpackChunkName: "forgotPassword" */ "@/views/ForgotPassword.vue"
+          /* webpackChunkName: "ForgotPassword" */ "@/views/ForgotPassword.vue"
         ),
+    },
+    {
+      path: "/password-reset/:token",
+      name: "passwordReset",
+      meta: { requiresAuth: false },
+      component: () =>
+        import(
+          /* webpackChunkName: "PasswordReset" */ "@/views/PasswordReset.vue"
+        ),
+    },
+    {
+      path: "/:pathMatch(.*)*",
+      name: "notFound",
+      component: () =>
+        import(/* webpackChunkName: "NotFound" */ "@/views/NotFound.vue"),
     },
   ],
 });

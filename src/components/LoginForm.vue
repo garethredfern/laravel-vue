@@ -32,12 +32,12 @@ const password = ref(null);
     />
     <div class="flex justify-between items-center">
       <BaseBtn type="submit" text="Login" />
-      <router-link
+      <RouterLink
         to="/forgot-password"
         class="hover:underline text-sm text-gray-400"
       >
         Forgot your password?
-      </router-link>
+      </RouterLink>
     </div>
     <FlashMessage :error="authStore.authError" />
   </form>

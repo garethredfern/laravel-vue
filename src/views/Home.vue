@@ -8,8 +8,8 @@
       </h2>
       <p class="font-bold">
         You can register for an account
-        <router-link to="/register" class="underline hover:no-underline"
-          >here</router-link
+        <RouterLink to="/register" class="underline hover:no-underline"
+          >here</RouterLink
         >.
       </p>
     </article>
