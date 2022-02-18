@@ -2,7 +2,7 @@
 import { ref } from "vue";
 import { getError } from "@/utils/helpers";
 import BaseBtn from "@/components/BaseBtn.vue";
-import AuthService from "@/services/AuthService";
+import UserService from "@/services/UserService";
 import BaseInput from "@/components/BaseInput.vue";
 import FlashMessage from "@/components/FlashMessage.vue";
 
@@ -27,8 +27,8 @@ async function updatePassword() {
     password_confirmation: passwordConfirm.value,
   };
   try {
-    const response = await AuthService.updatePassword(payload);
-    message.value = response.data.status;
+    const response = await UserService.updatePassword(payload);
+    message.value = response.data.message;
     clearForm();
   } catch (error) {
     authError.value = getError(error);
