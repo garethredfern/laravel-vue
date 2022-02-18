@@ -12,17 +12,24 @@ const passwordConfirm = ref(null);
 const authError = ref(null);
 const message = ref(null);
 
+function clearForm() {
+  currentPassword.value = null;
+  password.value = null;
+  passwordConfirm.value = null;
+}
+
 async function updatePassword() {
   authError.value = null;
   message.value = null;
   const payload = {
-    current_password: currentPassword,
-    password: password,
-    password_confirmation: passwordConfirm,
+    current_password: currentPassword.value,
+    password: password.value,
+    password_confirmation: passwordConfirm.value,
   };
   try {
     const response = await AuthService.updatePassword(payload);
     message.value = response.data.status;
+    clearForm();
   } catch (error) {
     authError.value = getError(error);
   }
