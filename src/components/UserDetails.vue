@@ -6,12 +6,12 @@ const userStore = useUser();
 </script>
 
 <template>
-  <div v-if="userStore.user">
+  <div>
     <transition name="fade">
       <img
         v-if="userStore.user.avatar"
         :src="userStore.user.avatar"
-        class="w-16 h-16 rounded-full lg:w-20 lg:h-20"
+        class="w-16 h-16 rounded-full lg:w-20 lg:h-20 mb-2"
         alt=""
       />
     </transition>
