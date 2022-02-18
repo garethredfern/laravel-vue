@@ -51,6 +51,13 @@ const router = createRouter({
         ),
     },
     {
+      path: "/user/:id",
+      name: "user",
+      meta: { requiresAuth: true },
+      component: () =>
+        import(/* webpackChunkName: "PasswordReset" */ "@/views/User.vue"),
+    },
+    {
       path: "/:pathMatch(.*)*",
       name: "notFound",
       component: () =>
