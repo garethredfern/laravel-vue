@@ -19,7 +19,7 @@ async function sendVerification() {
   };
   try {
     const response = await AuthService.sendVerification(payload);
-    message.value = response.status;
+    message.value = response.data.status;
   } catch (error) {
     authError.value = getError(error);
   }
@@ -27,8 +27,10 @@ async function sendVerification() {
 </script>
 
 <template>
-  <form @submit.prevent="sendVerification">
-    <BaseBtn type="submit" text="Verify Email" />
-  </form>
-  <FlashMessage :message="message" :error="error" />
+  <div>
+    <form @submit.prevent="sendVerification">
+      <BaseBtn type="submit" text="Verify Email" />
+    </form>
+    <FlashMessage :message="message" :error="authError" />
+  </div>
 </template>
