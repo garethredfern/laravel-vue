@@ -15,7 +15,14 @@ const showLogin = computed(() => !authStore.loggedIn && !authStore.authLoading);
       </RouterLink>
     </nav>
     <ul v-if="authStore.loggedIn" class="flex space-x-4">
-      <li>{{ authStore.authUser.name }}</li>
+      <li>
+        <RouterLink
+          :to="{ name: 'user', params: { id: authStore.authUser.id } }"
+          class="transition hover:text-gray-600"
+        >
+          {{ authStore.authUser.name }}
+        </RouterLink>
+      </li>
       <li>
         <RouterLink to="/dashboard" class="transition hover:text-gray-600"
           >Dashboard</RouterLink
@@ -24,7 +31,7 @@ const showLogin = computed(() => !authStore.loggedIn && !authStore.authLoading);
       <li>
         <button
           @click="authStore.logout"
-          class="transition hover:text-gray-600"
+          class="transition hover:text-gray-600 uppercase text-sm"
         >
           Logout
         </button>
