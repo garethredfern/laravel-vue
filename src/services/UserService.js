@@ -10,8 +10,8 @@ export default {
   paginateUsers(link) {
     return API.apiClient.get(link);
   },
-  updateUser(payload) {
-    return API.apiClient.put("/user", payload);
+  updateUser(userId, payload) {
+    return API.apiClient.put(`/user/${userId}`, payload);
   },
   updatePassword(payload) {
     return API.apiClient.put("/user/password", payload);
