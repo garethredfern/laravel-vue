@@ -42,19 +42,11 @@ export default {
     await authClient.get("/sanctum/csrf-cookie");
     return authClient.post("/reset-password", payload);
   },
-  async updatePassword(payload) {
-    await authClient.get("/sanctum/csrf-cookie");
-    return authClient.put("/api/user/password", payload);
-  },
   async registerUser(payload) {
     await authClient.get("/sanctum/csrf-cookie");
     return authClient.post("/register", payload);
   },
   sendVerification(payload) {
     return authClient.post("/email/verification-notification", payload);
-  },
-  async updateUser(payload) {
-    await authClient.get("/sanctum/csrf-cookie");
-    return authClient.put("/api/user", payload);
   },
 };
