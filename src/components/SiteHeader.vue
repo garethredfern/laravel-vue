@@ -4,7 +4,7 @@ import { useAuth } from "@/stores/authStore";
 import { HomeIcon } from "@heroicons/vue/solid";
 
 const authStore = useAuth();
-const showLogin = computed(() => !authStore.loggedIn && !authStore.authLoading);
+const showLogin = computed(() => !authStore.loggedIn && !authStore.loading);
 </script>
 
 <template>
@@ -17,10 +17,10 @@ const showLogin = computed(() => !authStore.loggedIn && !authStore.authLoading);
     <ul v-if="authStore.loggedIn" class="flex space-x-4">
       <li>
         <RouterLink
-          :to="{ name: 'user', params: { id: authStore.authUser.id } }"
+          :to="{ name: 'user', params: { id: authStore.user.id } }"
           class="transition hover:text-gray-600"
         >
-          {{ authStore.authUser.name }}
+          {{ authStore.user.name }}
         </RouterLink>
       </li>
       <li>

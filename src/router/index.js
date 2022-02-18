@@ -78,7 +78,7 @@ router.beforeEach(async (to) => {
   await authStore.getAuthUser();
   // instead of having to check every route record with
   // to.matched.some(record => record.meta.requiresAuth)
-  if (to.meta.requiresAuth && !authStore.authUser) {
+  if (to.meta.requiresAuth && !authStore.user) {
     // this route requires auth, check if logged in
     // if not, redirect to login page.
     return {
@@ -87,7 +87,7 @@ router.beforeEach(async (to) => {
       query: { redirect: to.fullPath },
     };
   }
-  if (authStore.authUser && guestAuthRoutes.includes(to.name)) {
+  if (authStore.user && guestAuthRoutes.includes(to.name)) {
     return {
       path: "/dashboard",
     };

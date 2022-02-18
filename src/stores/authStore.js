@@ -3,7 +3,7 @@ import { getError } from "@/utils/helpers";
 import AuthService from "@/services/AuthService";
 
 export const useAuth = defineStore({
-  id: "auth",
+  id: "authStore",
   state: () => ({
     user: null,
     error: null,
@@ -45,14 +45,7 @@ export const useAuth = defineStore({
   },
 
   getters: {
-    isAdmin: (state) => (state.user ? state.user.isAdmin : false),
-
     loggedIn: (state) => !!state.user,
-
-    authUser: (state) => state.user,
-
-    authError: (state) => state.error,
-
-    authLoading: (state) => state.loading,
+    isAdmin: (state) => (state.user ? state.user.isAdmin : false),
   },
 });
