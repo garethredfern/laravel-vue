@@ -18,5 +18,8 @@ export const getError = (error) => {
   if (error.response.data && error.response.data.errors) {
     return error.response.data.errors;
   }
+  if (error.response.data && error.response.status === 403) {
+    return error.response.data.message;
+  }
   return null;
 };
