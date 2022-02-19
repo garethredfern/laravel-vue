@@ -8,14 +8,28 @@ const showLogin = computed(() => !authStore.loggedIn && !authStore.loading);
 </script>
 
 <template>
-  <header class="flex space-x-4 bg-slate-100 p-5 border-b-2 uppercase text-sm">
-    <nav class="space-x-5">
+  <header
+    class="flex justify-between bg-slate-100 p-5 border-b-2 uppercase text-sm"
+  >
+    <nav class="flex space-x-5">
       <RouterLink to="/" class="transition hover:text-gray-600">
         <HomeIcon class="h-5 w-5" />
       </RouterLink>
+      <ul v-if="authStore.loggedIn" class="flex space-x-5">
+        <li>
+          <RouterLink to="/dashboard" class="transition hover:text-gray-600"
+            >Dashboard</RouterLink
+          >
+        </li>
+        <li v-if="authStore.user.isAdmin">
+          <RouterLink to="/users" class="transition hover:text-gray-600"
+            >Users</RouterLink
+          >
+        </li>
+      </ul>
     </nav>
-    <ul v-if="authStore.loggedIn" class="flex space-x-4">
-      <li>
+    <ul class="flex space-x-5">
+      <li v-if="authStore.loggedIn">
         <RouterLink
           :to="{ name: 'user', params: { id: authStore.user.id } }"
           class="transition hover:text-gray-600"
@@ -24,17 +38,14 @@ const showLogin = computed(() => !authStore.loggedIn && !authStore.loading);
         </RouterLink>
       </li>
       <li>
-        <RouterLink to="/dashboard" class="transition hover:text-gray-600"
-          >Dashboard</RouterLink
+        <RouterLink
+          v-if="showLogin"
+          to="/login"
+          class="transition hover:text-gray-600"
+          >Login</RouterLink
         >
-      </li>
-      <li v-if="authStore.user.isAdmin">
-        <RouterLink to="/users" class="transition hover:text-gray-600"
-          >Users</RouterLink
-        >
-      </li>
-      <li>
         <button
+          v-else
           @click="authStore.logout"
           class="transition hover:text-gray-600 uppercase text-sm"
         >
@@ -42,11 +53,5 @@ const showLogin = computed(() => !authStore.loggedIn && !authStore.loading);
         </button>
       </li>
     </ul>
-    <RouterLink
-      v-if="showLogin"
-      to="/login"
-      class="transition hover:text-gray-600"
-      >Login</RouterLink
-    >
   </header>
 </template>
