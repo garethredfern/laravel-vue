@@ -28,6 +28,11 @@ const showLogin = computed(() => !authStore.loggedIn && !authStore.loading);
           >Dashboard</RouterLink
         >
       </li>
+      <li v-if="authStore.user.isAdmin">
+        <RouterLink to="/users" class="transition hover:text-gray-600"
+          >Users</RouterLink
+        >
+      </li>
       <li>
         <button
           @click="authStore.logout"
