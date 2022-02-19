@@ -16,17 +16,20 @@ const email = ref(null);
 const message = ref(null);
 const userError = ref(null);
 
-function updateUser() {
+async function updateUser() {
   message.value = null;
   userError.value = null;
   const payload = {
     name: name.value,
     email: email.value,
   };
-  UserService.updateUser(route.params.id, payload)
-    .then(() => userStore.getUser(userStore.user.id))
-    .then(() => (message.value = "User updated."))
-    .catch((error) => (userError.value = getError(error)));
+  try {
+    await UserService.updateUser(route.params.id, payload);
+    userStore.getUser(userStore.user.id);
+    message.value = "User updated";
+  } catch (error) {
+    userError.value = getError(error);
+  }
 }
 
 onMounted(() => {
