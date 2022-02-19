@@ -13,9 +13,9 @@ const props = defineProps({
 
 <template>
   <button
-    :type="props.type"
+    :type="type"
     class="rounded border border-transparent bg-blue-400 px-2.5 py-1.5 text-center text-xs text-white shadow-sm transition hover:bg-blue-500 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2"
   >
-    {{ props.text }}
+    {{ text }}
   </button>
 </template>

@@ -1,36 +1,33 @@
-<script>
-export default {
-  name: "FlashMessage",
-  props: {
-    message: {
-      type: String,
-      default: null,
-    },
-    error: {
-      type: [Object, String],
-      default: null,
-    },
+<script setup>
+import { computed } from "vue";
+
+const props = defineProps({
+  message: {
+    type: String,
+    default: null,
   },
-  computed: {
-    errorKeys() {
-      if (!this.error || this.getType(this.error) === "string") {
-        return null;
-      }
-      return Object.keys(this.error);
-    },
+  error: {
+    type: [Object, String],
+    default: null,
   },
-  methods: {
-    getErrors(key) {
-      return this.error[key];
-    },
-    getType(obj) {
-      return Object.prototype.toString.call(obj).slice(8, -1).toLowerCase();
-    },
-    titleCase(value) {
-      return value.replace("_", " ");
-    },
-  },
-};
+});
+
+const errorKeys = computed(() => {
+  if (!this.error || this.getType(this.error) === "string") {
+    return null;
+  }
+  return Object.keys(this.error);
+});
+
+function getErrors(key) {
+  return this.error[key];
+}
+function getType(obj) {
+  return Object.prototype.toString.call(obj).slice(8, -1).toLowerCase();
+}
+function titleCase(value) {
+  return value.replace("_", " ");
+}
 </script>
 
 <template>

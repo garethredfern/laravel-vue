@@ -34,19 +34,19 @@ const props = defineProps({
 <template>
   <div>
     <label
-      :for="props.name"
+      :for="name"
       class="text-sm text-gray-500"
-      :class="{ 'sr-only': !props.showLabel }"
-      v-if="props.label"
+      :class="{ 'sr-only': !showLabel }"
+      v-if="label"
     >
-      {{ props.label }}
+      {{ label }}
     </label>
     <input
-      :id="props.name"
-      :type="props.type"
-      :required="props.required"
-      :placeholder="props.placeholder"
-      :autocomplete="props.autocomplete"
+      :id="name"
+      :type="type"
+      :required="required"
+      :placeholder="placeholder"
+      :autocomplete="autocomplete"
       :value="$attrs.modelValue"
       @input="$emit('update:modelValue', $event.target.value)"
       class="block w-full appearance-none rounded-md border border-gray-300 px-3 py-2 placeholder-gray-400 shadow-sm focus:border-blue-500 focus:outline-none focus:ring-blue-500"
