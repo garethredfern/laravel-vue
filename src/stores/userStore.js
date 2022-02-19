@@ -7,6 +7,8 @@ export const useUser = defineStore({
   state: () => ({
     user: null,
     users: [],
+    meta: null,
+    links: null,
     error: null,
     loading: false,
   }),
@@ -29,6 +31,22 @@ export const useUser = defineStore({
         this.loading = true;
         const response = await UserService.getUsers(pageNumber);
         this.users = response.data.data;
+        this.meta = response.data.meta;
+        this.links = response.data.links;
+        this.loading = false;
+      } catch (error) {
+        this.users = [];
+        this.loading = false;
+        this.error = getError(error);
+      }
+    },
+    async paginateUsers(link) {
+      try {
+        this.loading = true;
+        const response = await UserService.paginateUsers(link);
+        this.users = response.data.data;
+        this.meta = response.data.meta;
+        this.links = response.data.links;
         this.loading = false;
       } catch (error) {
         this.users = [];

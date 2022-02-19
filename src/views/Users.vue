@@ -3,6 +3,7 @@ import { useUser } from "@/stores/userStore";
 import { MailIcon } from "@heroicons/vue/solid";
 import { UserCircleIcon } from "@heroicons/vue/solid";
 import FlashMessage from "@/components/FlashMessage.vue";
+import UserPagination from "@/components/UserPagination.vue";
 
 const userStore = useUser();
 
@@ -19,9 +20,8 @@ getUsers();
     <h2 class="mb-4 text-xl font-bold">Users</h2>
     <transition name="fade" mode="out-in">
       <FlashMessage
-        message="loading..."
         v-if="userStore.loading && !userStore.users.length"
-        key="loading-message"
+        message="loading..."
       />
       <ul v-else>
         <li
@@ -57,11 +57,10 @@ getUsers();
       </ul>
     </transition>
     <transition name="fade">
-      <FlashMessage
-        v-if="useUser.error"
-        :error="useUser.error"
-        key="error-message"
-      />
+      <FlashMessage v-if="userStore.error" :error="userStore.error" />
+    </transition>
+    <transition name="fade">
+      <UserPagination v-if="userStore.meta && userStore.meta.last_page > 1" />
     </transition>
   </div>
 </template>
