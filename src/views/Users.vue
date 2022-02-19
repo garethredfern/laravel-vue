@@ -57,7 +57,7 @@ getUsers();
       </ul>
     </transition>
     <transition name="fade">
-      <FlashMessage v-if="userStore.error" :error="userStore.error" />
+      <FlashMessage v-if="userStore.error" :errorMessage="userStore.error" />
     </transition>
     <transition name="fade">
       <UserPagination v-if="userStore.meta && userStore.meta.last_page > 1" />

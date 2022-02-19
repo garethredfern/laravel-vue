@@ -68,6 +68,6 @@ async function registerUser() {
       class="mb-4"
     />
     <BaseBtn type="submit" text="Register" />
-    <FlashMessage :error="authError" />
+    <FlashMessage :errorMessage="authError" />
   </form>
 </template>

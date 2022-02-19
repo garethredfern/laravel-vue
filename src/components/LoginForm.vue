@@ -39,6 +39,6 @@ const password = ref(null);
         Forgot your password?
       </RouterLink>
     </div>
-    <FlashMessage :error="authStore.error" />
+    <FlashMessage :errorMessage="authStore.error" />
   </form>
 </template>

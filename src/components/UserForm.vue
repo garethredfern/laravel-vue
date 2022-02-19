@@ -57,6 +57,6 @@ onMounted(() => {
       class="mb-4"
     />
     <BaseBtn type="submit" text="Update" />
-    <FlashMessage :message="message" :error="userError" />
+    <FlashMessage :message="message" :errorMessage="userError" />
   </form>
 </template>

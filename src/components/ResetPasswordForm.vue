@@ -50,6 +50,6 @@ async function resetPassword() {
       class="mb-4"
     />
     <BaseBtn type="submit" text="Reset Password" />
-    <FlashMessage :message="message" :error="authError" />
+    <FlashMessage :message="message" :errorMessage="authError" />
   </form>
 </template>

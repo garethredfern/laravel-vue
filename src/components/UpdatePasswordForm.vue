@@ -62,6 +62,6 @@ async function updatePassword() {
       class="mb-4"
     />
     <BaseBtn type="submit" text="Update" />
-    <FlashMessage :message="message" :error="authError" />
+    <FlashMessage :message="message" :errorMessage="authError" />
   </form>
 </template>

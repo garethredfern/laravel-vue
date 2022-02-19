@@ -6,21 +6,21 @@ const props = defineProps({
     type: String,
     default: null,
   },
-  error: {
+  errorMessage: {
     type: [Object, String],
     default: null,
   },
 });
 
 const errorKeys = computed(() => {
-  if (!this.error || this.getType(this.error) === "string") {
+  if (!props.errorMessage || getType(props.errorMessage) === "string") {
     return null;
   }
-  return Object.keys(this.error);
+  return Object.keys(props.errorMessage);
 });
 
 function getErrors(key) {
-  return this.error[key];
+  return props.errorMessage[key];
 }
 function getType(obj) {
   return Object.prototype.toString.call(obj).slice(8, -1).toLowerCase();
@@ -37,14 +37,14 @@ function titleCase(value) {
         {{ message }}
       </p>
       <p
-        v-if="error && getType(error) === 'string'"
+        v-if="errorMessage && getType(errorMessage) === 'string'"
         key="error"
         class="mt-2 text-sm text-pink-500"
       >
-        {{ error }}
+        {{ errorMessage }}
       </p>
       <ul
-        v-if="getType(error) === 'object'"
+        v-if="getType(errorMessage) === 'object'"
         class="mt-2 text-sm text-pink-500"
         key="error-list"
       >

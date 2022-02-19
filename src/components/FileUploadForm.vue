@@ -62,6 +62,6 @@ function uploadFile() {
       <input type="file" :accept="fileTypes" @change="fileChange" id="file" />
     </div>
     <BaseBtn text="Upload" />
-    <FlashMessage :message="message" :error="uploadError" />
+    <FlashMessage :message="message" :errorMessage="uploadError" />
   </form>
 </template>

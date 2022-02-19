@@ -31,6 +31,6 @@ async function sendVerification() {
     <form @submit.prevent="sendVerification">
       <BaseBtn type="submit" text="Verify Email" />
     </form>
-    <FlashMessage :message="message" :error="authError" />
+    <FlashMessage :message="message" :errorMessage="authError" />
   </div>
 </template>

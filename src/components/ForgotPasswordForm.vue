@@ -39,6 +39,6 @@ async function forgotPassword() {
     <div class="flex justify-between">
       <BaseBtn type="submit" text="Submit" />
     </div>
-    <FlashMessage :message="message" :error="authError" />
+    <FlashMessage :message="message" :errorMessage="authError" />
   </form>
 </template>
