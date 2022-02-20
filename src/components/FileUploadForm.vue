@@ -46,7 +46,7 @@ function uploadFile() {
 
   FileService.uploadFile(payload)
     .then(() => {
-      message.value = "File uploaded.";
+      message.value = "File uploaded";
       emit("fileUploaded");
     })
     .catch((error) => (uploadError.value = getError(error)));

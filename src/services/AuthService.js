@@ -17,7 +17,7 @@ authClient.interceptors.response.use(
   (response) => response,
   (error) => {
     if (error.response && [401, 419].includes(error.response.status)) {
-      console.info("[401, 419]: User not authorized, login failed with API.");
+      console.info("[401, 419]: User not authorized, login failed with API");
     }
     return Promise.reject(error);
   }

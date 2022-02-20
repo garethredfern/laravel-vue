@@ -22,7 +22,7 @@ apiClient.interceptors.response.use(
   (response) => response,
   (error) => {
     if (error.response && [401, 419].includes(error.response.status)) {
-      console.error("User not authorized, login failed with API.");
+      console.error("User not authorized, login failed with API");
     }
     return Promise.reject(error);
   }

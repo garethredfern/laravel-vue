@@ -6,7 +6,7 @@ export const getError = (error) => {
   if (!error.response) {
     console.info(`API: ${error.config?.url} not found`);
     console.info(error);
-    return "API Request Error, please try again.";
+    return "API Request Error, please try again";
   }
   if (import.meta.env.DEV) {
     console.group("dev error info");
