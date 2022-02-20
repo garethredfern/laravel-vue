@@ -20,10 +20,12 @@ export const useUser = defineStore({
         const response = await UserService.getUser(userId);
         this.user = response.data.data;
         this.loading = false;
+        return response;
       } catch (error) {
         this.user = null;
         this.loading = false;
         this.error = getError(error);
+        return error;
       }
     },
     async getUsers(pageNumber) {
@@ -34,10 +36,12 @@ export const useUser = defineStore({
         this.meta = response.data.meta;
         this.links = response.data.links;
         this.loading = false;
+        return response;
       } catch (error) {
         this.users = [];
         this.loading = false;
         this.error = getError(error);
+        return error;
       }
     },
     async paginateUsers(link) {
@@ -48,10 +52,12 @@ export const useUser = defineStore({
         this.meta = response.data.meta;
         this.links = response.data.links;
         this.loading = false;
+        return response;
       } catch (error) {
         this.users = [];
         this.loading = false;
         this.error = getError(error);
+        return error;
       }
     },
   },
