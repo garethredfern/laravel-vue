@@ -36,10 +36,12 @@ export const useAuth = defineStore({
         const response = await AuthService.getAuthUser();
         this.user = response.data.data;
         this.loading = false;
+        return response;
       } catch (error) {
         this.user = null;
         this.loading = false;
         this.error = getError(error);
+        return error;
       }
     },
   },
