@@ -2,6 +2,7 @@
 import { ref, onMounted } from "vue";
 import { useRoute } from "vue-router";
 import { getError } from "@/utils/helpers";
+import { useAuth } from "@/stores/authStore";
 import { useUser } from "@/stores/userStore";
 import BaseBtn from "@/components/BaseBtn.vue";
 import UserService from "@/services/UserService";
@@ -9,6 +10,7 @@ import BaseInput from "@/components/BaseInput.vue";
 import FlashMessage from "@/components/FlashMessage.vue";
 
 const route = useRoute();
+const authStore = useAuth();
 const userStore = useUser();
 
 const name = ref(null);
@@ -26,6 +28,9 @@ async function updateUser() {
   try {
     await UserService.updateUser(route.params.id, payload);
     userStore.getUser(userStore.user.id);
+    if (userStore.user.id === authStore.user.id) {
+      authStore.getAuthUser();
+    }
     message.value = "User updated";
   } catch (error) {
     userError.value = getError(error);
