@@ -1,17 +1,11 @@
 <script setup>
-import { useRoute } from "vue-router";
 import { useUser } from "@/stores/userStore";
 import UserForm from "@/components/UserForm.vue";
 import UserDetails from "@/components/UserDetails.vue";
 import FileUploadForm from "@/components/FileUploadForm.vue";
 import UpdatePasswordForm from "@/components/UpdatePasswordForm.vue";
 
-const route = useRoute();
 const userStore = useUser();
-
-function updateUser() {
-  userStore.getUser(route.params.id);
-}
 </script>
 
 <template>
@@ -24,13 +18,14 @@ function updateUser() {
       />
       <UserForm
         v-if="userStore.user"
+        :key="userStore.user"
         class="p-5 bg-white border rounded shadow"
       />
       <FileUploadForm
         label="Upload Avatar"
         :fileTypes="['image/*']"
         endpoint="/user/avatar"
-        @fileUploaded="updateUser"
+        @fileUploaded="userStore.getUser($route.params.id)"
         class="p-5 bg-white border rounded shadow"
       />
       <UpdatePasswordForm class="p-5 bg-white border rounded shadow" />
