@@ -24,7 +24,7 @@ const userStore = useUser();
       <FileUploadForm
         label="Upload Avatar"
         :fileTypes="['image/*']"
-        endpoint="/user/avatar"
+        :endpoint="`/user/${$route.params.id}/avatar`"
         @fileUploaded="userStore.getUser($route.params.id)"
         class="p-5 bg-white border rounded shadow"
       />
