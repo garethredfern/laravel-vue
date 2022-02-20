@@ -1,5 +1,6 @@
 import { createRouter, createWebHistory } from "vue-router";
-import { useAuth } from "@/stores/authStore";
+import { canSeeUser, authenticated, canSeeUsers } from "@/middleware";
+
 import Home from "@/views/Home.vue";
 
 const router = createRouter({
@@ -56,6 +57,7 @@ const router = createRouter({
       meta: { requiresAuth: true },
       component: () =>
         import(/* webpackChunkName: "User" */ "@/views/User.vue"),
+      beforeEnter: [canSeeUser],
     },
     {
       path: "/users",
@@ -63,42 +65,25 @@ const router = createRouter({
       meta: { requiresAuth: true },
       component: () =>
         import(/* webpackChunkName: "Users" */ "@/views/Users.vue"),
+      beforeEnter: [canSeeUsers],
     },
     {
-      path: "/:pathMatch(.*)*",
+      path: "/404",
       name: "notFound",
       component: () =>
         import(/* webpackChunkName: "NotFound" */ "@/views/NotFound.vue"),
     },
+    {
+      path: "/:pathMatch(.*)*",
+      redirect: () => {
+        // catch all redirect to 404
+        return { name: "notFound" };
+      },
+    },
   ],
 });
 
-const guestAuthRoutes = [
-  "login",
-  "register",
-  "forgotPassword",
-  "passwordReset",
-];
-
-router.beforeEach(async (to) => {
-  const authStore = useAuth();
-  await authStore.getAuthUser();
-  // instead of having to check every route record with
-  // to.matched.some(record => record.meta.requiresAuth)
-  if (to.meta.requiresAuth && !authStore.user) {
-    // this route requires auth, check if logged in
-    // if not, redirect to login page.
-    return {
-      path: "/login",
-      // save the location we were at to come back later
-      query: { redirect: to.fullPath },
-    };
-  }
-  if (authStore.user && guestAuthRoutes.includes(to.name)) {
-    return {
-      path: "/dashboard",
-    };
-  }
-});
+// use middleware to check auth
+router.beforeEach(authenticated);
 
 export default router;
