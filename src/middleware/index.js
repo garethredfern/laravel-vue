@@ -19,8 +19,9 @@ export const canSeeUser = async (to) => {
 };
 
 export const canSeeUsers = async () => {
+  const pageNumber = 1;
   const userStore = useUser();
-  const data = await userStore.getUsers();
+  const data = await userStore.getUsers(pageNumber);
   if (data instanceof Error && data.response.status === 403) {
     return {
       path: "notFound",
