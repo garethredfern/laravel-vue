@@ -12,8 +12,6 @@ const userStore = useUser();
 function updateUser() {
   userStore.getUser(route.params.id);
 }
-// on created
-updateUser();
 </script>
 
 <template>

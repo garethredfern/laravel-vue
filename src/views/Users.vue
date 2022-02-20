@@ -6,13 +6,6 @@ import FlashMessage from "@/components/FlashMessage.vue";
 import UserPagination from "@/components/UserPagination.vue";
 
 const userStore = useUser();
-
-function getUsers() {
-  const pageNumber = 1;
-  userStore.getUsers(pageNumber);
-}
-// on created
-getUsers();
 </script>
 
 <template>
