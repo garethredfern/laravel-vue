@@ -1,11 +1,18 @@
 <script setup>
+import { useRouter } from "vue-router";
 import { useUser } from "@/stores/userStore";
 import { MailIcon } from "@heroicons/vue/solid";
 import { UserCircleIcon } from "@heroicons/vue/solid";
 import FlashMessage from "@/components/FlashMessage.vue";
 import UserPagination from "@/components/UserPagination.vue";
 
+const router = useRouter();
 const userStore = useUser();
+
+async function getUser(id) {
+  await userStore.getUser(id);
+  router.push({ name: "user", params: { id } });
+}
 </script>
 
 <template>
@@ -33,7 +40,9 @@ const userStore = useUser();
               class="w-10 h-10 text-gray-400 rounded-full"
               v-else
             />
-            <span class="text-gray-600">{{ user.name }}</span>
+            <button @click="getUser(user.id)" class="text-gray-600">
+              {{ user.name }}
+            </button>
           </div>
           <a
             :href="`mailto:${user.email}`"
