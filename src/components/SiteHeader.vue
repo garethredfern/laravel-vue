@@ -1,10 +1,20 @@
 <script setup>
 import { computed } from "vue";
+import { useRouter } from "vue-router";
 import { useAuth } from "@/stores/authStore";
+import { useUser } from "@/stores/userStore";
 import { HomeIcon } from "@heroicons/vue/solid";
 
+const router = useRouter();
 const authStore = useAuth();
+const userStore = useUser();
+
 const showLogin = computed(() => !authStore.loggedIn && !authStore.loading);
+
+async function getUser() {
+  await userStore.getUser(authStore.user.id);
+  router.push({ name: "user", params: { id: authStore.user.id } });
+}
 </script>
 
 <template>
@@ -30,12 +40,12 @@ const showLogin = computed(() => !authStore.loggedIn && !authStore.loading);
     </nav>
     <ul class="flex space-x-5">
       <li v-if="authStore.loggedIn">
-        <RouterLink
-          :to="{ name: 'user', params: { id: authStore.user.id } }"
-          class="transition hover:text-gray-600"
+        <button
+          @click="getUser"
+          class="transition uppercase hover:text-gray-600"
         >
           {{ authStore.user.name }}
-        </RouterLink>
+        </button>
       </li>
       <li>
         <RouterLink
