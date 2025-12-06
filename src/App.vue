@@ -1,28 +1,19 @@
+<script setup lang="ts">
+import AppHeader from '@/components/AppHeader.vue'
+</script>
+
 <template>
-  <div id="app">
-    <Header />
-    <main class="container mx-auto">
-      <router-view />
+  <div id="app" class="min-h-screen bg-gray-50">
+    <AppHeader />
+    <main class="container mx-auto px-4 py-8">
+      <RouterView />
     </main>
   </div>
 </template>
 
-<script>
-import Header from "@/components/Header";
-
-export default {
-  name: "app",
-  components: {
-    Header,
-  },
-};
-</script>
-
 <style>
-@import url("https://fonts.googleapis.com/css?family=Open+Sans:400,700");
-
-.fade-enter,
-.fade-leave-active {
+.fade-enter-from,
+.fade-leave-to {
   opacity: 0;
 }
 .fade-enter-active,

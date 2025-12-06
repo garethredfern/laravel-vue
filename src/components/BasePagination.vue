@@ -1,115 +1,71 @@
+<script setup lang="ts">
+interface PaginationMeta {
+  current_page: number
+  last_page: number
+  per_page: number
+  total: number
+}
+
+interface PaginationLinks {
+  first: string | null
+  last: string | null
+  prev: string | null
+  next: string | null
+}
+
+const props = defineProps<{
+  meta?: PaginationMeta | null
+  links: PaginationLinks
+}>()
+
+const emit = defineEmits<{
+  paginate: [link: string]
+}>()
+
+function goToPage(link: string | null) {
+  if (link) {
+    emit('paginate', link)
+  }
+}
+</script>
+
 <template>
-  <div aria-label="Pagination" class="flex items-center justify-between py-4">
-    <p class="text-sm text-gray-500">
+  <div aria-label="Pagination" class="flex items-center justify-between py-4 border-t border-gray-200">
+    <p v-if="meta" class="text-sm text-gray-500">
       Page {{ meta.current_page }} of {{ meta.last_page }}
     </p>
-    <div class="flex">
+    <div class="flex space-x-2">
       <button
-        rel="first"
-        type="button"
-        @click="firstPage"
         v-if="links.prev"
-        class="px-2.5 py-1.5 m-1 text-sm text-pink-400 border rounded hover:text-pink-500"
+        @click="goToPage(links.first)"
+        class="px-3 py-1.5 text-sm text-gray-600 border border-gray-300 rounded hover:bg-gray-50 transition"
       >
         First
       </button>
 
       <button
-        rel="prev"
-        type="button"
-        @click="prevPage"
-        :class="{ 'rounded-r': !links.next }"
         v-if="links.prev"
-        class="px-2.5 py-1.5 m-1 text-sm text-pink-400 border rounded hover:text-pink-500"
+        @click="goToPage(links.prev)"
+        class="px-3 py-1.5 text-sm text-gray-600 border border-gray-300 rounded hover:bg-gray-50 transition"
       >
         Previous
       </button>
 
       <button
-        rel="next"
-        type="button"
-        @click="nextPage"
-        :class="{ 'rounded-l': !links.prev }"
         v-if="links.next"
-        class="px-2.5 py-1.5 m-1 text-sm text-pink-400 border rounded hover:text-pink-500"
+        @click="goToPage(links.next)"
+        class="px-3 py-1.5 text-sm text-gray-600 border border-gray-300 rounded hover:bg-gray-50 transition"
       >
         Next
       </button>
 
       <button
-        rel="last"
-        type="button"
-        @click="lastPage"
         v-if="links.next"
-        class="px-2.5 py-1.5 m-1 text-sm text-pink-400 border rounded hover:text-pink-500"
+        @click="goToPage(links.last)"
+        class="px-3 py-1.5 text-sm text-gray-600 border border-gray-300 rounded hover:bg-gray-50 transition"
       >
         Last
       </button>
     </div>
   </div>
 </template>
-
-<script>
-export default {
-  props: {
-    action: {
-      type: String,
-      required: true,
-    },
-    path: {
-      type: String,
-      default: null,
-    },
-    meta: {
-      type: Object,
-      required: true,
-    },
-    links: {
-      type: Object,
-      required: true,
-    },
-  },
-  methods: {
-    firstPage() {
-      this.$store.dispatch(this.action, this.links.first).then(() => {
-        if (this.path) {
-          this.$router.push({
-            path: this.path,
-            query: { page: 1 },
-          });
-        }
-      });
-    },
-    prevPage() {
-      this.$store.dispatch(this.action, this.links.prev).then(() => {
-        if (this.path) {
-          this.$router.push({
-            path: this.path,
-            query: { page: this.meta.current_page - 1 },
-          });
-        }
-      });
-    },
-    nextPage() {
-      this.$store.dispatch(this.action, this.links.next).then(() => {
-        if (this.path) {
-          this.$router.push({
-            path: this.path,
-            query: { page: this.meta.current_page + 1 },
-          });
-        }
-      });
-    },
-    lastPage() {
-      this.$store.dispatch(this.action, this.links.last).then(() => {
-        if (this.path) {
-          this.$router.push({
-            path: this.path,
-            query: { page: this.meta.last_page },
-          });
-        }
-      });
-    },
-  },
-};
-</script>
